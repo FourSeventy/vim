@@ -3,7 +3,7 @@
  set nocompatible
 
 " pathogen
- execute pathogen#infect() 
+execute pathogen#infect() 
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -14,6 +14,7 @@ filetype indent plugin on
 syntax enable
 
 " Set colors
+colors mike
 
 " set line numbers
 set number
@@ -25,5 +26,8 @@ inoremap jk <ESC>
 let mapleader = "\<Space>"
 
 "control-p fuzzy search
- let g:ctrlp_map = '<c-o>'
- let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-o>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" :w!! saves a file as root
+cmap w!! w !sudo tee % >/dev/null
