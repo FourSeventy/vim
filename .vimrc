@@ -1,8 +1,8 @@
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
-set nocompatible
+ set nocompatible
 
-"pathogen
+" pathogen
  execute pathogen#infect() 
 
 " Attempt to determine the type of a file based on its name and possibly its
@@ -11,7 +11,12 @@ set nocompatible
 filetype indent plugin on
  
 " Enable syntax highlighting
-syntax on
+syntax enable
+
+" Set colors
+
+" set line numbers
+set number
 
 "remap esc to jk
 inoremap jk <ESC>
@@ -19,3 +24,6 @@ inoremap jk <ESC>
 "remap leader key
 let mapleader = "\<Space>"
 
+"control-p fuzzy search
+ let g:ctrlp_map = '<c-o>'
+ let g:ctrlp_cmd = 'CtrlP'
