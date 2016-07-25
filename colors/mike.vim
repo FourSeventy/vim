@@ -101,7 +101,7 @@ hi diffFile                  guifg=#FFFFFF guibg=NONE gui=bold ctermfg=15 ctermb
 " Ruby
 " ----
 hi rubyTodo                  guifg=#df5f5f guibg=NONE gui=bold ctermfg=167 ctermbg=NONE cterm=bold
-hi rubyClass                 guifg=#af5f00 ctermfg=130
+hi rubyClass                 guifg=#af5f00 ctermfg=208
 hi rubyConstant              guifg=#df5f5f ctermfg=167
 hi rubyInterpolation         guifg=#FFFFFF ctermfg=15
 hi rubyBlockParameter        guifg=#dfdfff ctermfg=189
@@ -110,6 +110,8 @@ hi rubyStringDelimiter       guifg=#87af5f ctermfg=107
 hi rubyInstanceVariable      guifg=#dfdfff ctermfg=189
 hi rubyPredefinedConstant    guifg=#df5f5f ctermfg=167
 hi rubyLocalVariableOrMethod guifg=#dfdfff ctermfg=189
+hi rubySymbol                guifg=red     ctermfg=38
+hi rubyInteger               guifg=green   ctermfg=41
 
 " Python
 " ------
