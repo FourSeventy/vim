@@ -41,3 +41,4 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "setting up airline font
 let g:airline_powerline_fonts = 1
+let g:airline_theme='distinguished'
