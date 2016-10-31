@@ -13,8 +13,14 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax enable
 
-" Set colors
-colors mike
+"-- Solarized --
+if !has("gui_running")
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=256
+endif
+
+colorscheme solarized
+set background=dark
 
 " set line numbers
 set number
