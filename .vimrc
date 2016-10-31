@@ -18,7 +18,6 @@ if !has("gui_running")
     let g:solarized_termtrans=1
     let g:solarized_termcolors=256
 endif
-
 colorscheme solarized
 set background=dark
 
@@ -30,6 +29,9 @@ inoremap jk <ESC>
 
 "remap leader key
 let mapleader = "\<Space>"
+
+"tab to 4 spaces
+set tabstop=4
 
 "-- ctrl-p --
 let g:ctrlp_map = '<c-o>'
