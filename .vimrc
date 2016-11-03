@@ -28,6 +28,10 @@ set background=dark
 " set line numbers
 set number
 
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
 "remap esc to jk
 inoremap jk <ESC>
 
@@ -82,7 +86,11 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <leader>l :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>h :bprevious<CR>"
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
 
 "quick saving
 nnoremap <Leader>w :w<CR>
@@ -124,7 +132,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
-
 
 "------------------ Go-vim ----------------------------
 "enable highlighting
