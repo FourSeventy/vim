@@ -78,6 +78,15 @@ set nowrap "Don't Wrap lines (it is stupid)
 " :w!! saves a file as root
 cmap w!! w !sudo tee % >/dev/null
 
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>"
+
+"quick saving
+nnoremap <Leader>w :w<CR>
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
@@ -109,6 +118,12 @@ autocmd VimEnter * if !argc() | NERDTree | endif
 let g:airline_powerline_fonts = 1
 let g:airline_theme='distinguished'
 set laststatus=2
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'"
 
 
 "------------------ Go-vim ----------------------------
