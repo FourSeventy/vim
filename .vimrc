@@ -18,9 +18,9 @@ filetype indent plugin on
 syntax enable
 
 "color scheme
-let g:gruvbox_termcolors=256
 colorscheme gruvbox
 set background=dark
+set termguicolors
 
 " set line numbers
 set number
