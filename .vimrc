@@ -18,11 +18,8 @@ filetype indent plugin on
 syntax enable
 
 "color scheme
-if !has("gui_running")
-    let g:solarized_termtrans=1
-    let g:solarized_termcolors=256
-endif
-colorscheme solarized
+let g:gruvbox_termcolors=256
+colorscheme gruvbox
 set background=dark
 
 " set line numbers
@@ -124,7 +121,7 @@ autocmd VimEnter * if !argc() | NERDTree | endif
 
 "------------------ Airline ---------------------------
 let g:airline_powerline_fonts = 1
-let g:airline_theme='distinguished'
+let g:airline_theme='gruvbox'
 set laststatus=2
 
 " Enable the list of buffers
