@@ -76,9 +76,6 @@ set ai "Auto indent
 set si "Smart indent
 set nowrap "Don't Wrap lines (it is stupid)
 
-" :w!! saves a file as root
-cmap w!! w !sudo tee % >/dev/null
-
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
 
@@ -91,6 +88,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 "quick saving
 nnoremap <Leader>w :w<CR>
+
+"saving the file as sudo
+noremap <Leader>W :w !sudo tee % > /dev/null
+
 
 "------------------------------------------------
 " Plugins
