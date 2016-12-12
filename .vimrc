@@ -62,8 +62,8 @@ set expandtab
 set smarttab
 
 "1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 "Round indent to multiple of 'shiftwidth' for > and < commands
 set shiftround
@@ -75,6 +75,9 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set nowrap "Don't Wrap lines (it is stupid)
+
+"enable mouse scrolling
+set mouse=a
 
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
