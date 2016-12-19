@@ -142,11 +142,16 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_trailing_whitespace_error=0
 
 "fmt fail silent
 let g:go_fmt_fail_silently = 1
 
 let g:go_fmt_command = "gofmt"
+
+"proper tab settings for go
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
 "----------------- Syntastic --------------------------
 set statusline+=%#warningmsg#
