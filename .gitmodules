@@ -31,3 +31,6 @@
 [submodule "bundle/ReplaceWithRegister"]
 	path = bundle/ReplaceWithRegister
 	url = https://github.com/vim-scripts/ReplaceWithRegister.git
+[submodule "bundle/vim-signature"]
+	path = bundle/vim-signature
+	url = https://github.com/kshenoy/vim-signature
