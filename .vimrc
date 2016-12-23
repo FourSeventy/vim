@@ -108,6 +108,13 @@ set foldmethod=manual
 let g:ctrlp_map = '<c-o>'
 let g:ctrlp_cmd = 'CtrlP'
 
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 "------------------ NERDTree -----------------------
 "toggle
@@ -156,6 +163,15 @@ let g:go_fmt_command = "gofmt"
 
 "proper tab settings for go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+
+"----------------- Ack.vim ----------------------------
+if executable('ag')
+" Use ag over grep
+  "set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag over grep
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 "----------------- Syntastic --------------------------
 set statusline+=%#warningmsg#

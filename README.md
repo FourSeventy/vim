@@ -5,3 +5,4 @@
 3. Initialize vim submodules `cd ~/.vim/bundle; git submodule init; git submodule update`
 4. Symlink .vimrc `cd ~; ln -s ~/.vim/.vimrc .vimrc`
 5. Install the font in the ./fonts directory, and configure your terminal to use it.
+6. Install silver searcher `brew install the_silver_searcher`
