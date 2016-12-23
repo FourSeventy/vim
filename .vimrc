@@ -95,6 +95,10 @@ nnoremap <Leader>w :w<CR>
 "saving the file as sudo
 noremap <Leader>W :w !sudo tee % > /dev/null
 
+"enable manual code folding
+set foldenable
+set foldmethod=manual
+
 
 "------------------------------------------------
 " Plugins
