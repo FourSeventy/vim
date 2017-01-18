@@ -79,6 +79,9 @@ set nowrap "Don't Wrap lines (it is stupid)
 "enable mouse scrolling
 set mouse=a
 
+"allows us to switch buffers without saving them 
+set hidden
+
 " Move to the next buffer
 nmap <leader>l :bnext<CR>
 
