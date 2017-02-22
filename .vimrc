@@ -90,7 +90,7 @@ nmap <leader>h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 
 "quick saving
 nnoremap <Leader>w :w<CR>
@@ -101,6 +101,9 @@ noremap <Leader>W :w !sudo tee % > /dev/null
 "enable manual code folding
 set foldenable
 set foldmethod=manual
+
+"disable auto comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 "------------------------------------------------
