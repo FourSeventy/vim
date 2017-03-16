@@ -119,8 +119,11 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " let g:ctrlp_use_caching = 0
 endif
+
+"use py-matcher plugin for matching
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 function! CtrlPCommand()
     let c = 0
