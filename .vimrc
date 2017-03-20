@@ -176,6 +176,7 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 "Display beautifully annotated source code to see which functions are covered with <leader>c.
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>T <Plug>(go-test-func)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 "Open godoc in a browser
@@ -183,9 +184,6 @@ au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
-" Use ag over grep
-  "set grepprg=ag\ --nogroup\ --nocolor
-
   " Use ag over grep
   let g:ackprg = 'ag --vimgrep'
 endif
