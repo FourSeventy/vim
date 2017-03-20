@@ -167,11 +167,19 @@ let g:go_highlight_trailing_whitespace_error=0
 
 "fmt fail silent
 let g:go_fmt_fail_silently = 1
-
 let g:go_fmt_command = "gofmt"
 
 "proper tab settings for go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+
+"Run commands such as go run for the current file with <leader>r or go test for the current package with <leader>t. 
+"Display beautifully annotated source code to see which functions are covered with <leader>c.
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+"Open godoc in a browser
+au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
@@ -199,6 +207,9 @@ nmap <leader>e :Errors<CR>
 
 " Go
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+
+" Ruby
+let g:syntastic_ruby_checkers = ['mri']
 
 "---------------- Neocomplete -------------------------
 "Disable AutoComplPop.
