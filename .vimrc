@@ -248,3 +248,6 @@ autocmd FileType javascript NeoCompleteLock
 autocmd FileType go NeoCompleteUnlock
 autocmd FileType java NeoCompleteUnlock
 
+" disable member and buffer sources
+call neocomplete#custom#source('member', 'disabled', 1)
+call neocomplete#custom#source('buffer', 'disabled', 1)
