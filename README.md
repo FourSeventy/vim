@@ -1,4 +1,4 @@
-##Setup:
+## Setup:
 
 1. Install vim with lua scripting enabled `brew install vim --with-lua`
 2. Clone vim repo to ~/.vim `git clone git@github.com:FourSeventy/vim.git .vim`
