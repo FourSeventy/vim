@@ -105,6 +105,8 @@ set foldmethod=manual
 "disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"remove pipe characters in vertical split gutter
+set fillchars+=vert:\ 
 
 "------------------------------------------------
 " Plugins
