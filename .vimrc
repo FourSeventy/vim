@@ -206,7 +206,7 @@ let g:syntastic_loc_list_height = 5
 nmap <leader>e :Errors<CR>
 
 " Go
-let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet']
 
 " Ruby
 let g:syntastic_ruby_checkers = ['mri']
