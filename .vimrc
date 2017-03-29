@@ -105,6 +105,9 @@ set foldmethod=manual
 "disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+"hotkey to close quickfix and location list windows
+nmap <leader>r :ccl <CR> <bar> :lclose <CR>
+
 "remove pipe characters in vertical split gutter
 set fillchars+=vert:\ 
 
