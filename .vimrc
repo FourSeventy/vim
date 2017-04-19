@@ -111,6 +111,9 @@ nmap <leader>r :ccl <CR> <bar> :lclose <CR>
 "remove pipe characters in vertical split gutter
 set fillchars+=vert:\ 
 
+"copy current buffer directory to + register
+nmap <leader>p :let @+ = expand("%") <CR>
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
