@@ -196,26 +196,20 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-"----------------- Syntastic --------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"----------------- Ale  --------------------------
+" Set the linters to use
+let g:ale_linters = {
+\   'go': ['go build', 'golint', 'go vet'],
+\   'ruby': ['ruby']
+\}
 
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_loc_list_height = 5
+" Set error msg format
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_warning_str = 'Warn'
+let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
 
-" <leader> e will open the error box
-nmap <leader>e :Errors<CR>
-
-" Go
-let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-
-" Ruby
-let g:syntastic_ruby_checkers = ['mri']
+" Disable auto linting
+let g:ale_lint_on_text_changed = 'never'
 
 "---------------- Neocomplete -------------------------
 " Use neocomplete.
