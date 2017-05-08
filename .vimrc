@@ -108,6 +108,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "hotkey to close quickfix and location list windows
 nmap <leader>r :ccl <CR> <bar> :lclose <CR>
 
+"hotkey to open location list window
+nmap <leader>e :lopen <CR>
+
 "remove pipe characters in vertical split gutter
 set fillchars+=vert:\ 
 
