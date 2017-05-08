@@ -117,6 +117,9 @@ set fillchars+=vert:\
 "copy current buffer directory to + register
 nmap <leader>p :let @+ = expand("%") <CR>
 
+"auto load external changes into buffers
+set autoread
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
