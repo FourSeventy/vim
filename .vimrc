@@ -19,6 +19,7 @@ syntax enable
 
 "color scheme
 colorscheme gruvbox
+let g:gruvbox_contrast_dark='soft'
 set background=dark
 set termguicolors
 
