@@ -90,7 +90,7 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
+" This closes the buffer but keeps the window open
 nmap <leader>q :bp <BAR> bd #<CR>
 
 "quick saving
@@ -211,69 +211,7 @@ let g:gruvbox_underline=0
 let g:ale_linters = {
 \   'go': ['go build', 'golint', 'go vet'],
 \   'ruby': ['ruby'],
-\   
-\ 'ASM':[],
-\ 'Ansible':[],
-\ 'AsciiDoc':[],
-\ 'Bash':[],
-\ 'Bourne Shell':[],
-\ 'C':[],
-\ 'C++':[],
-\ 'C#	':[],
-\ 'Chef	':[],
-\ 'CMake	':[],
-\ 'CoffeeScript':[],
-\ 'Crystal	':[],
-\ 'CSS':[],
-\ 'Cython':[],
-\ 'D	':[],
-\ 'Dockerfile':[],
-\ 'Elixir':[],
-\ 'Elm	':[],
-\ 'Erb	':[],
-\ 'Erlang	':[],
-\ 'Fortran	':[],
-\ 'Haml':[],
-\ 'Handlebars':[],
-\ 'Haskell':[],
-\ 'HTML':[],
-\ 'Java	':[],
-\ 'JavaScript':[],
-\ 'JSON	':[],
-\ 'Kotlin	':[],
-\ 'LaTeX	':[],
-\ 'Lua	':[],
-\ 'Markdown':[],
-\ 'MATLAB	':[],
-\ 'Nim	':[],
-\ 'nix	':[],
-\ 'nroff	':[],
-\ 'OCaml	':[],
-\ 'Perl	':[],
-\ 'PHP':[],
-\ 'Pod	':[],
-\ 'Pug	':[],
-\ 'Puppet	':[],
-\ 'Python':[],
-\ 'ReasonML':[],
-\ 'reStructuredText	':[],
-\ 'RPM':[],
-\ 'Ruby':[],
-\ 'Rust	':[],
-\ 'SASS	':[],
-\ 'SCSS	':[],
-\ 'Scala	':[],
-\ 'Slim	':[],
-\ 'SML	':[],
-\ 'SQL	':[],
-\ 'Swift	':[],
-\ 'Texinfo	':[],
-\ 'Text^':[],
-\ 'TypeScript':[],
-\ 'Verilog':[],
-\ 'Vim':[],
-\ 'XHTML':[],
-\ 'YAML':[]
+\   'eruby': [],
 \}
 
 " Set error msg format
