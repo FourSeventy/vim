@@ -225,8 +225,6 @@ if executable('ag')
 endif
 
 "----------------- Ale  --------------------------
-" temp hack to fix underline problem
-let g:gruvbox_underline=0
 
 " Set the linters to use
 let g:ale_linters = {
