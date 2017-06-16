@@ -284,3 +284,8 @@ autocmd FileType java NeoCompleteUnlock
 " disable member and buffer sources
 call neocomplete#custom#source('member', 'disabled', 1)
 call neocomplete#custom#source('buffer', 'disabled', 1)
+
+" ---------------- vim-devicons ------------------------
+
+" Set the icons to single width
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
