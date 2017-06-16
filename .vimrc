@@ -224,6 +224,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" Search for word under cursor
+nmap <leader>f :Ack!<CR>
+
 "----------------- Ale  --------------------------
 
 " Set the linters to use
