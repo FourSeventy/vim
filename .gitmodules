@@ -49,6 +49,3 @@
 [submodule "bundle/matchit.zip"]
 	path = bundle/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip
-[submodule "bundle/vim-devicons"]
-	path = bundle/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons
