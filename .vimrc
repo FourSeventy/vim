@@ -232,7 +232,7 @@ nmap <leader>f :Ack!<CR>
 " Set the linters to use
 let g:ale_linters = {
 \   'go': ['go build', 'golint', 'go vet'],
-\   'ruby': ['ruby'],
+\   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
 \}
 
