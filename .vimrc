@@ -24,6 +24,7 @@ set background=dark
 set termguicolors
 
 " set line numbers
+set relativenumber
 set number
 
 " Configure backspace so it acts as it should act
@@ -83,11 +84,11 @@ set mouse=a
 "allows us to switch buffers without saving them 
 set hidden
 
-" Move to the next buffer
-nmap <leader>l :bnext<CR>
-
-" Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+" remap window movement 
+nmap <leader>h <C-W><C-H>
+nmap <leader>j <C-W><C-J>
+nmap <leader>k <C-W><C-K>
+nmap <leader>l <C-W><C-L>
 
 " Close the current buffer and move to the previous one
 " This closes the buffer but keeps the window open
@@ -184,8 +185,8 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>h <Plug>AirlineSelectPrevTab
-nmap <leader>l <Plug>AirlineSelectNextTab
+nmap <leader>. <Plug>AirlineSelectPrevTab
+nmap <leader>, <Plug>AirlineSelectNextTab
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
