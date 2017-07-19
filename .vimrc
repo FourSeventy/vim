@@ -24,7 +24,6 @@ set background=dark
 set termguicolors
 
 " set line numbers
-set relativenumber
 set number
 
 " Configure backspace so it acts as it should act
@@ -112,6 +111,12 @@ nmap <leader>r :ccl <CR> <bar> :lclose <CR>
 
 "hotkey to open location list window
 nmap <leader>e :lopen <CR>
+
+"hotkey to open a new tab
+nmap <leader>t :tabnew <CR>
+
+"hotkey to close a tab
+nmap <leader>c :tabclose <CR>
 
 "remove pipe characters in vertical split gutter
 set fillchars+=vert:\ 
