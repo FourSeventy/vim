@@ -240,6 +240,7 @@ let g:ale_linters = {
 \   'go': ['go build', 'golint', 'go vet'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
+\   'javascript': ['standard'],
 \}
 
 " Set error msg format
