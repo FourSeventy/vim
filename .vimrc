@@ -283,11 +283,24 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Only enable completion for the file types that i want
-autocmd FileType ruby NeoCompleteLock
-autocmd FileType javascript NeoCompleteLock
-autocmd FileType go NeoCompleteUnlock
-autocmd FileType java NeoCompleteUnlock
+" autocmd FileType ruby NeoCompleteLock
+" autocmd FileType javascript NeoCompleteLock
+" autocmd FileType go NeoCompleteUnlock
+" autocmd FileType java NeoCompleteUnlock
 
 " disable member and buffer sources
 call neocomplete#custom#source('member', 'disabled', 1)
 call neocomplete#custom#source('buffer', 'disabled', 1)
+
+
+
+"---------------------- UltiSnip ---------------------------
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<leader>s"
+
+let g:UltiSnipsJumpForwardTrigger="<leader>s"
+let g:UltiSnipsJumpBackwardTrigger="<leader>z"
+
+" Set up where our custom snippet directory is
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
