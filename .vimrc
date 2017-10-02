@@ -148,7 +148,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "------------------ NERDTree -----------------------
 "toggle
-map <C-n> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeToggle<CR>
 
 " General properties
 let NERDTreeDirArrows=1
@@ -296,11 +296,9 @@ call neocomplete#custom#source('buffer', 'disabled', 1)
 
 "---------------------- UltiSnip ---------------------------
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<leader>s"
-
-let g:UltiSnipsJumpForwardTrigger="<leader>s"
-let g:UltiSnipsJumpBackwardTrigger="<leader>z"
+" Trigger configuration.  TODO: make this a better hotkey
+let g:UltiSnipsExpandTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-z>"
 
 " Set up where our custom snippet directory is
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
