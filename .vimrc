@@ -297,8 +297,8 @@ call neocomplete#custom#source('buffer', 'disabled', 1)
 "---------------------- UltiSnip ---------------------------
 
 " Trigger configuration.  TODO: make this a better hotkey
-let g:UltiSnipsExpandTrigger="<c-z>"
-let g:UltiSnipsJumpForwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-a>"
 
 " Set up where our custom snippet directory is
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
