@@ -83,6 +83,9 @@ set mouse=a
 "allows us to switch buffers without saving them 
 set hidden
 
+"set highlighting of words when searching
+set hlsearch
+
 " remap window movement 
 nmap <leader>h <C-W><C-H>
 nmap <leader>j <C-W><C-J>
@@ -94,7 +97,7 @@ nmap <leader>l <C-W><C-L>
 nmap <leader>q :bp <BAR> bd #<CR>
 
 "quick saving
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w :w <BAR> :noh<CR>
 
 "saving the file as sudo
 noremap <Leader>W :w !sudo tee % > /dev/null
