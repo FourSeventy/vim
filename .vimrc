@@ -219,10 +219,10 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 "Run commands such as go run for the current file with <leader>r or go test for the current package with <leader>t. 
 "Display beautifully annotated source code to see which functions are covered with <leader>c.
-au FileType go nmap <leader>y <Plug>(go-run)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>T <Plug>(go-test-func)
-au FileType go nmap <leader>c :GoCoverageToggle<CR>
+au FileType go nmap <leader>gr <Plug>(go-run)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gT <Plug>(go-test-func)
+au FileType go nmap <leader>gc :GoCoverageToggle<CR>
 
 "Open godoc in a browser
 au FileType go nmap <leader>gb <Plug>(go-doc-browser)
