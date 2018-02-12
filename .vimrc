@@ -130,6 +130,9 @@ nmap <leader>p :let @+ = expand("%") <CR>
 "auto load external changes into buffers
 set autoread
 
+"set diff mode to vertical
+set diffopt+=vertical
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
