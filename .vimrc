@@ -226,6 +226,7 @@ au FileType go nmap <leader>gr <Plug>(go-run)
 au FileType go nmap <leader>gt <Plug>(go-test)
 au FileType go nmap <leader>gT <Plug>(go-test-func)
 au FileType go nmap <leader>gc :GoCoverageToggle<CR>
+au FileType go nmap <leader>gi :GoInfo<CR>
 
 "Open godoc in a browser
 au FileType go nmap <leader>gb <Plug>(go-doc-browser)
