@@ -152,6 +152,9 @@ endif
 "use py-matcher plugin for matching
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+"default to regex mode for better searching
+let g:ctrlp_regexp = 1
+
 "------------------ NERDTree -----------------------
 "toggle
 map <leader>n :NERDTreeToggle<CR>
