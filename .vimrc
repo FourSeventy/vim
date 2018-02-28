@@ -133,6 +133,9 @@ set autoread
 "set diff mode to vertical
 set diffopt+=vertical
 
+"case insensitive search
+set ic
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
