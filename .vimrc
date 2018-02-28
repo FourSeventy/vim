@@ -91,6 +91,9 @@ nmap <leader>h <C-W><C-H>
 nmap <leader>j <C-W><C-J>
 nmap <leader>k <C-W><C-K>
 nmap <leader>l <C-W><C-L>
+nmap <Leader>= <C-w>=
+nmap <Leader>+ <C-w>+
+nmap <Leader>- <C-w>-
 
 " Close the current buffer and move to the previous one
 " This closes the buffer but keeps the window open
