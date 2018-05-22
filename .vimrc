@@ -269,49 +269,6 @@ let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
 " Disable auto linting
 let g:ale_lint_on_text_changed = 'never'
 
-"---------------- Neocomplete -------------------------
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-
-" Ignore case when finding matches
-let g:neocomplete#enable_ignore_case = 1
-
-" enable fuzzy completion
-let g:neocomplete#enable_fuzzy_completion = 1
-
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-
-" disable preview window
-set completeopt-=preview
-
-" Tab to scroll throgh options, shift-tab to scroll backwards
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Only enable completion for the file types that i want
-" autocmd FileType ruby NeoCompleteLock
-" autocmd FileType javascript NeoCompleteLock
-" autocmd FileType go NeoCompleteUnlock
-" autocmd FileType java NeoCompleteUnlock
-
-" disable member and buffer sources
-call neocomplete#custom#source('member', 'disabled', 1)
-call neocomplete#custom#source('buffer', 'disabled', 1)
-
-
-
 "---------------------- UltiSnip ---------------------------
 
 " Trigger configuration.  TODO: make this a better hotkey
@@ -320,3 +277,23 @@ let g:UltiSnipsJumpForwardTrigger="<c-a>"
 
 " Set up where our custom snippet directory is
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+
+"--------------------- Deoplete ---------------------------
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+
+" automatically close scratch window at top
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" set sources
+let g:deoplete#sources = {}
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+
+" Tab to scroll throgh options, shift-tab to scroll backwards
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<TAB>"
