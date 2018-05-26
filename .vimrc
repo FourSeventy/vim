@@ -297,3 +297,6 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 " Tab to scroll throgh options, shift-tab to scroll backwards
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" Disable preview window
+set completeopt-=preview
