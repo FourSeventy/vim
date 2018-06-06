@@ -139,6 +139,9 @@ set diffopt+=vertical
 "case insensitive search
 set ic
 
+"turn off command characters in bottom right
+set noshowcmd
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
@@ -269,9 +272,15 @@ let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
 " Disable auto linting
 let g:ale_lint_on_text_changed = 'never'
 
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
+
 "---------------------- UltiSnip ---------------------------
 
-" Trigger configuration.  TODO: make this a better hotkey
+" Trigger configuration.
 let g:UltiSnipsExpandTrigger="<c-a>"
 let g:UltiSnipsJumpForwardTrigger="<c-a>"
 
