@@ -9,3 +9,4 @@
 6. Install silver searcher `brew install the_silver_searcher`
 7. Install python3 `brew install python3`
 8. Install the neovim python module `sudo pip3 install --upgrade --force-reinstall neovim`
+9. Install go binaries `:GoInstallBinaries` 
