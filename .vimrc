@@ -227,7 +227,7 @@ let g:go_highlight_trailing_whitespace_error=0
 
 "fmt fail silent
 let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "gofmt"
+let g:go_fmt_command = "goimports"
 
 "proper tab settings for go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
@@ -298,8 +298,8 @@ call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
 " automatically close scratch window at top
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" set sources
-let g:deoplete#sources = {}
+" set sources for specific languages
+let g:deoplete#ignore_sources ={'go':['around','buffer','member','omni']}
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
