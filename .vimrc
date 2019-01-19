@@ -92,8 +92,6 @@ nmap <leader>j <C-W><C-J>
 nmap <leader>k <C-W><C-K>
 nmap <leader>l <C-W><C-L>
 nmap <Leader>= <C-w>=
-nmap <Leader>+ <C-w>+
-nmap <Leader>- <C-w>-
 
 " Close the current buffer and move to the previous one
 " This closes the buffer but keeps the window open
@@ -146,23 +144,10 @@ set noshowcmd
 " Plugins
 " -----------------------------------------------
 
-"------------------ ctrl-p ------------------
-let g:ctrlp_map = '<c-o>'
-let g:ctrlp_cmd = 'CtrlP'
+"------------------ vim-picker ------------------
+nmap <unique> <leader>o <Plug>PickerEdit
 
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  " let g:ctrlp_use_caching = 0
-endif
-
-"use py-matcher plugin for matching
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-"default to regex mode for better searching
-let g:ctrlp_regexp = 1
 
 "------------------ NERDTree -----------------------
 "toggle
