@@ -11,3 +11,6 @@
 8. Install the neovim python module `sudo pip3 install --upgrade --force-reinstall neovim`
 9. Install go binaries `:GoInstallBinaries` 
 10. Install fzy `brew install fzy` 
+
+### Update submodules
+`git submodule update --recursive --remote`
