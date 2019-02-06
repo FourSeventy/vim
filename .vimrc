@@ -230,6 +230,10 @@ au FileType go nmap <leader>gf :GoDef<CR>
 "Open godoc in a browser
 au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 
+"code folding
+"au FileType go set foldmethod=syntax
+"let g:go_fold_enable = ['block']
+
 "----------------- Ack.vim ----------------------------
 if executable('ag')
   " Use ag over grep
