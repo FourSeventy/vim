@@ -103,6 +103,9 @@ nnoremap <Leader>w :w <BAR> :noh<CR>
 "saving the file as sudo
 noremap <Leader>W :w !sudo tee % > /dev/null
 
+"json formatting
+nmap <leader>y :%!python -m json.tool <CR>
+
 "enable manual code folding
 set foldenable
 set foldmethod=manual
