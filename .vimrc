@@ -233,6 +233,10 @@ au FileType go nmap <leader>gf :GoDef<CR>
 "Open godoc in a browser
 au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 
+"use gopls for def and info
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 "code folding
 "au FileType go set foldmethod=syntax
 "let g:go_fold_enable = ['block']
@@ -279,25 +283,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-a>"
 " Set up where our custom snippet directory is
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
-"--------------------- Deoplete ---------------------------
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+"-----------------------COC Completion ----------------------
 
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
-
-" automatically close scratch window at top
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" set sources for specific languages
-let g:deoplete#ignore_sources ={'go':['around','buffer','member','omni']}
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-" Tab to scroll throgh options, shift-tab to scroll backwards
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-" Disable preview window
-set completeopt-=preview
+"use tab and S-tab to scroll through completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
