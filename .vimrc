@@ -238,8 +238,8 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
 "code folding
-"au FileType go set foldmethod=syntax
-"let g:go_fold_enable = ['block']
+" au FileType go set foldmethod=syntax
+" let g:go_fold_enable = ['block']
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
@@ -284,8 +284,15 @@ let g:UltiSnipsJumpForwardTrigger="<c-a>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 
 
-"-----------------------COC Completion ----------------------
+"----------------------- coc Completion ----------------------
 
 "use tab and S-tab to scroll through completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
