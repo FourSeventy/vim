@@ -277,8 +277,8 @@ let g:airline#extensions#ale#enabled = 1
 "---------------------- UltiSnip ---------------------------
 
 " Trigger configuration.
-let g:UltiSnipsExpandTrigger="<c-a>"
-let g:UltiSnipsJumpForwardTrigger="<c-a>"
+let g:UltiSnipsExpandTrigger="<c-q>"
+let g:UltiSnipsJumpForwardTrigger="<c-q>"
 
 " Set up where our custom snippet directory is
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
@@ -295,4 +295,8 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Use <c-a> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <C-a> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
