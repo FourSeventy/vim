@@ -148,7 +148,7 @@ set noshowcmd
 " -----------------------------------------------
 
 "------------------ vim-picker ------------------
-nmap <unique> <leader>o <Plug>PickerEdit
+nmap <unique> <leader>o :PickerEdit<CR>
 
 
 
@@ -254,7 +254,7 @@ nmap <leader>f :Ack!<CR>
 
 " Set the linters to use
 let g:ale_linters = {
-\   'go': ['go build', 'golint', 'go vet'],
+\   'go': ['gopls', 'golint', 'go vet'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
 \   'javascript': ['standard'],

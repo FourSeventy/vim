@@ -6,12 +6,12 @@
 5. Symlink cocsettings `cd ~/.config/nvim; ln -s ~/.vim/coc-settings.json coc-settings.json`
 6. Install the font in the ./fonts directory, and configure your terminal to use it.
 7. Install silver searcher `brew install the_silver_searcher`
-8. Install python3 `brew install python3`
+8. Install python3 `brew install python3` (python needed for coc and ultisnips)
 9. Install the neovim python module `sudo pip3 install --upgrade --force-reinstall neovim`
 10. Install go binaries `:GoInstallBinaries` 
 11. Install gopls `GO111MODULE=on go get golang.org/x/tools/gopls@latest`
 12. Install fzy `brew install fzy` 
-13. Run this in nvim to install coc `:call coc#util#install()`
+13. Use yarn to build coc `cd /.vim/bundle/coc.nvim; yarn install yarn install --frozen-lockfile`
 14. Install coc snippets `:CocInstall coc-snippets`
 
 ### Update submodules
