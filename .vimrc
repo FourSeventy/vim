@@ -238,8 +238,11 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
 "code folding
-" au FileType go set foldmethod=syntax
+au FileType go setlocal foldmethod=indent
 " let g:go_fold_enable = ['block']
+au FileType go setlocal foldnestmax=1
+"makes saving the file not close folds https://github.com/fatih/vim-go/issues/502
+let g:go_fmt_experimental = 1
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
