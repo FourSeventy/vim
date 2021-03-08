@@ -254,14 +254,24 @@ endif
 nmap <leader>f :Ack!<CR>
 
 "----------------- Ale  --------------------------
-
 " Set the linters to use
 let g:ale_linters = {
 \   'go': ['gopls', 'golint', 'go vet'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
-\   'javascript': ['standard'],
+\   'vue': ['eslint'],
+\   'javascript': ['eslint']
 \}
+
+" Set the fixers 
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'vue': ['prettier'],
+\   'ruby': ['rubocop'],
+\}
+
+" auto-fix on save
+let g:ale_fix_on_save = 1
 
 " Set error msg format
 let g:ale_echo_msg_error_str = 'Error'

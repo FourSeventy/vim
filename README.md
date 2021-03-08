@@ -11,7 +11,7 @@
 10. Install go binaries `:GoInstallBinaries` 
 11. Install gopls `GO111MODULE=on go get golang.org/x/tools/gopls@latest`
 12. Install fzy `brew install fzy` 
-13. Use yarn to build coc `cd /.vim/bundle/coc.nvim; yarn install yarn install --frozen-lockfile`
+13. Use yarn to build coc `cd /.vim/bundle/coc.nvim; yarn install --frozen-lockfile`
 14. Install coc snippets `:CocInstall coc-snippets`
 
 ### Update submodules
