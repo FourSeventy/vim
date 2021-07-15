@@ -284,16 +284,6 @@ let g:ale_sign_error = '>>'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
-"---------------------- UltiSnip ---------------------------
-
-" Trigger configuration.
-" let g:UltiSnipsExpandTrigger="<c-q>"
-" let g:UltiSnipsJumpForwardTrigger="<c-q>"
-
-" " Set up where our custom snippet directory is
-" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-
-
 "----------------------- nvim compe ----------------------
 set completeopt=menuone,noselect
 
@@ -317,15 +307,18 @@ let g:compe.source.path = v:true
 let g:compe.source.buffer = v:true
 let g:compe.source.calc = v:true
 let g:compe.source.nvim_lsp = v:true
+let g:compe.source.vsnip = v:true
 " let g:compe.source.nvim_lua = v:true
-" let g:compe.source.vsnip = v:true
 " let g:compe.source.ultisnips = v:true
 " let g:compe.source.luasnip = v:true
 " let g:compe.source.emoji = v:true
 
 
 " inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <C-a>      compe#confirm('<C-a>')
+" inoremap <silent><expr> <C-a>      compe#confirm('<C-a>')
+lua << EOF
+vim.api.nvim_set_keymap("i", "<C-a>", "compe#confirm({ 'keys': '<C-a>', 'select': v:true })", { expr = true })
+EOF
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
@@ -373,10 +366,47 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
 "------------------------ lsp setup --------------------------
-"set up gopls language server
 lua << EOF
-require'lspconfig'.gopls.setup{}
-EOF
 
+-- set up lsp snippet capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+    }
+  }
+
+-- set up golang lsp server
+local golang_setup = {
+  -- configure lsp_signature
+  on_attach = function(client, bufnr)
+    cfg = {
+      bind = true, -- This is mandatory, otherwise border config won't get registered.
+                  -- If you want to hook lspsaga or other signature handler, pls set to false
+      floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+      --fix_pos = false,  -- set to true, the floating window will not auto-close until finish all parameters
+      hint_enable = false, -- virtual hint enable
+      hint_prefix = "",  -- Panda for parameter
+      hint_scheme = "String",
+      use_lspsaga = false,  -- set to true if you want to use lspsaga popup
+      hi_parameter = "Search", -- how your parameter will be highlight
+      max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+                      -- to view the hiding contents
+      max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+      handler_opts = {
+        border = "none"   -- double, single, shadow, none
+      },
+      extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+    }
+    require'lsp_signature'.on_attach(cfg)
+  end,
+  capabilities = capabilities
+}
+
+require'lspconfig'.gopls.setup(golang_setup)
+EOF
 
 
