@@ -250,6 +250,21 @@ endif
 " Search for word under cursor
 nmap <leader>f :Ack!<CR>
 
+"---------------- vim-vue-plugin -----------------------
+let g:vim_vue_plugin_config = { 
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['scss'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 0,
+      \'debug': 0,
+      \}
+
 "----------------- Ale  --------------------------
 " Set the linters to use
 let g:ale_linters = {

@@ -58,3 +58,6 @@
 [submodule "pack/plugins/start/friendly-snippets"]
 	path = pack/plugins/start/friendly-snippets
 	url = git@github.com:rafamadriz/friendly-snippets.git
+[submodule "pack/plugins/start/vim-vue-plugin"]
+	path = pack/plugins/start/vim-vue-plugin
+	url = git@github.com:leafOfTree/vim-vue-plugin.git
