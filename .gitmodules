@@ -1,63 +1,42 @@
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline
-[submodule "bundle/vim-go"]
-	path = bundle/vim-go
-	url = https://github.com/fatih/vim-go
-[submodule "bundle/auto-pairs"]
-	path = bundle/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "bundle/gruvbox"]
-	path = bundle/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
-[submodule "bundle/vim-commentary"]
-	path = bundle/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "bundle/ReplaceWithRegister"]
-	path = bundle/ReplaceWithRegister
+[submodule "pack/plugins/start/ReplaceWithRegister"]
+	path = pack/plugins/start/ReplaceWithRegister
 	url = https://github.com/vim-scripts/ReplaceWithRegister.git
-[submodule "bundle/vim-signature"]
-	path = bundle/vim-signature
-	url = https://github.com/kshenoy/vim-signature
-[submodule "bundle/ack.vim"]
-	path = bundle/ack.vim
+[submodule "pack/plugins/start/ack.vim"]
+	path = pack/plugins/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = https://github.com/tpope/vim-surround
-[submodule "bundle/ale"]
-	path = bundle/ale
-	url = https://github.com/w0rp/ale.git
-[submodule "bundle/nerdtree-git-plugin"]
-	path = bundle/nerdtree-git-plugin
-	url = https://github.com/xuyuanp/nerdtree-git-plugin
-[submodule "bundle/matchit.zip"]
-	path = bundle/matchit.zip
+[submodule "pack/plugins/start/auto-pairs"]
+	path = pack/plugins/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "pack/plugins/start/gruvbox"]
+	path = pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "pack/plugins/start/matchit.zip"]
+	path = pack/plugins/start/matchit.zip
 	url = https://github.com/vim-scripts/matchit.zip
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule "bundle/vim-jsx"]
-	path = bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx.git
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-[submodule "bundle/vim-vue"]
-	path = bundle/vim-vue
-	url = https://github.com/posva/vim-vue.git
-[submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/vim-endwise"]
-	path = bundle/vim-endwise
+[submodule "pack/plugins/start/nerdtree"]
+	path = pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "pack/plugins/start/nerdtree-git-plugin"]
+	path = pack/plugins/start/nerdtree-git-plugin
+	url = https://github.com/xuyuanp/nerdtree-git-plugin
+[submodule "pack/plugins/start/vim-airline"]
+	path = pack/plugins/start/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "pack/plugins/start/vim-commentary"]
+	path = pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "pack/plugins/start/vim-endwise"]
+	path = pack/plugins/start/vim-endwise
 	url = git@github.com:tpope/vim-endwise.git
-[submodule "bundle/vim-picker"]
-	path = bundle/vim-picker
+[submodule "pack/plugins/start/vim-fugitive"]
+	path = pack/plugins/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "pack/plugins/start/vim-picker"]
+	path = pack/plugins/start/vim-picker
 	url = git@github.com:srstevenson/vim-picker.git
-[submodule "bundle/coc.nvim"]
-	path = bundle/coc.nvim
-	url = git@github.com:neoclide/coc.nvim.git
+[submodule "pack/plugins/start/vim-signature"]
+	path = pack/plugins/start/vim-signature
+	url = https://github.com/kshenoy/vim-signature
+[submodule "pack/plugins/start/vim-surround"]
+	path = pack/plugins/start/vim-surround
+	url = https://github.com/tpope/vim-surround

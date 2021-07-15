@@ -14,8 +14,15 @@
 13. Use yarn to build coc `cd /.vim/bundle/coc.nvim; yarn install --frozen-lockfile`
 14. Install coc snippets `:CocInstall coc-snippets`
 
-### Update submodules
+### Update plugins
 `git submodule update --recursive --remote`
+
+### Remove a plugin
+```
+git submodule deinit vim/pack/shapeshed/start/vim-airline
+git rm vim/pack/shapeshed/start/vim-airline
+rm -Rf .git/modules/vim/pack/shapeshed/start/vim-airline
+```
 
 
 ### coc-settings.json
