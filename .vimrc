@@ -140,6 +140,9 @@ set ic
 "turn off command characters in bottom right
 set noshowcmd
 
+"always show sign column
+set signcolumn=yes
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
