@@ -9,22 +9,22 @@
 9. Install gopls language server `GO111MODULE=on go get golang.org/x/tools/gopls@latest`
 10. Install fzy `brew install fzy` 
 
-##Plugin Description
+## Plugin Description
 
-###lsp
+### lsp
 https://github.com/neovim/nvim-lspconfig
 
 with neovim 0.5 LSP(language server protocol) is built in. The plugin nvim-lspconfig comes with config that
 makes it easy to connect the LSP to language servers out of the box. Our autocompletion uses the built in lsp.
 Ale should use the buit in lsp but I don't have that set up correctly yet.
 
-###nvim-compe
+### nvim-compe
 https://github.com/hrsh7th/nvim-compe
 
 nvim-compe handles autocompletion and snippets. It uses the neovim LSP to get completions.
 
 
-###ale
+### ale
 https://github.com/dense-analysis/ale
 
 
