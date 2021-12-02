@@ -307,6 +307,9 @@ set completeopt=menuone,noselect
 
 let g:compe = {}
 let g:compe.enabled = v:true
+" Disable compe for text files or markdown files
+au! Filetype text call compe#setup({'enabled': v:false})
+au! Filetype markdown call compe#setup({'enabled': v:false})
 let g:compe.autocomplete = v:true
 let g:compe.debug = v:false
 let g:compe.min_length = 1
