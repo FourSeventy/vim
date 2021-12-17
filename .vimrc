@@ -214,8 +214,12 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_trailing_whitespace_error=0
 
 "fmt fail silent
-let g:go_fmt_fail_silently = 1
-let g:go_fmt_command = "gofmt"
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 0
+let g:go_fmt_command = "gopls"
+let g:go_imports_mode = 'gopls'
+let g:go_fmt_experimental = 0
 
 "proper tab settings for go
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
@@ -241,8 +245,6 @@ let g:go_info_mode='gopls'
 au FileType go setlocal foldmethod=indent
 " let g:go_fold_enable = ['block']
 au FileType go setlocal foldnestmax=1
-"makes saving the file not close folds https://github.com/fatih/vim-go/issues/502
-let g:go_fmt_experimental = 1
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
