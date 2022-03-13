@@ -1,5 +1,5 @@
 ## Setup
-1. Install neovim `brew install neovim/neovim/neovim`
+1. Install neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
 2. Clone vim repo to ~/.vim `git clone git@github.com:FourSeventy/vim.git .vim`
 3. Initialize vim submodules `cd ~/.vim/pack/plugins/start; git submodule init; git submodule update`
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
