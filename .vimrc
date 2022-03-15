@@ -431,6 +431,8 @@ local golang_setup = {
 
 require'lspconfig'.gopls.setup(golang_setup)
 
+require'lspconfig'.solargraph.setup{}
+
 
 -- disable the lsp diagnostics because ALE is doing this
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

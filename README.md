@@ -7,7 +7,10 @@
 7. Install silver searcher `brew install the_silver_searcher`
 8. Install go binaries `:GoInstallBinaries` 
 9. Install gopls language server `GO111MODULE=on go get golang.org/x/tools/gopls@latest`
-10. Install fzy `brew install fzy` 
+10. Install ruby language server `gem install solargraph`
+    a.) Generate YARD documentation  `solargraph bundle` (in root of project)
+    b.) Enhance rails intellisense https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e
+11. Install fzy `brew install fzy` 
 
 ## Plugin Description
 
