@@ -30,6 +30,11 @@ https://github.com/dense-analysis/ale
 
 ale handles syntax checking and linting. It also autocorrects and formats.
 
+### vim-vsnip && friendly-snippets
+https://github.com/hrsh7th/vim-vsnip
+
+Snippet functionality
+
 
 
 ### Add a plugin
