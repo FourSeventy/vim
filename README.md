@@ -27,12 +27,6 @@ https://github.com/hrsh7th/nvim-compe
 nvim-compe handles autocompletion and snippets. It uses the neovim LSP to get completions.
 
 
-### ale
-https://github.com/dense-analysis/ale
-
-
-ale handles syntax checking and linting. It also autocorrects and formats.
-
 ### vim-vsnip && friendly-snippets
 https://github.com/hrsh7th/vim-vsnip
 

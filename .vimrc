@@ -199,50 +199,6 @@ nmap <leader>, <Plug>AirlineSelectNextTab
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
 
-"------------------ Go-vim ----------------------------
-""enable highlighting
-"let g:go_highlight_functions = 1
-"let g:go_highlight_methods = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_types = 1
-"let g:go_highlight_operators = 1
-"let g:go_highlight_build_constraints = 1
-"let g:go_highlight_extra_types = 1
-"let g:go_highlight_trailing_whitespace_error=0
-
-""fmt fail silent
-"let g:go_fmt_fail_silently = 0
-"let g:go_fmt_autosave = 1
-"let g:go_imports_autosave = 0
-"let g:go_fmt_command = "gopls"
-"let g:go_imports_mode = 'gopls'
-"let g:go_fmt_experimental = 0
-
-""proper tab settings for go
-"autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
-
-""Run commands such as go run for the current file with <leader>r or go test for the current package with <leader>t. 
-""Display beautifully annotated source code to see which functions are covered with <leader>c.
-"au FileType go nmap <leader>gr <Plug>(go-run)
-"au FileType go nmap <leader>gt <Plug>(go-test)
-"au FileType go nmap <leader>gT <Plug>(go-test-func)
-"au FileType go nmap <leader>gc :GoCoverageToggle<CR>
-"au FileType go nmap <leader>gi :GoInfo<CR>
-"au FileType go nmap <leader>gd :GoDoc<CR>
-"au FileType go nmap <leader>gf :GoDef<CR>
-
-""Open godoc in a browser
-"au FileType go nmap <leader>gb <Plug>(go-doc-browser)
-
-""use gopls for def and info
-"let g:go_def_mode='gopls'
-"let g:go_info_mode='gopls'
-
-""code folding
-"au FileType go setlocal foldmethod=indent
-"" let g:go_fold_enable = ['block']
-"au FileType go setlocal foldnestmax=1
-
 "----------------- Ack.vim ----------------------------
 if executable('ag')
   " Use ag over grep
@@ -266,40 +222,6 @@ let g:vim_vue_plugin_config = {
       \'foldexpr': 0,
       \'debug': 0,
       \}
-
-"----------------- Ale  --------------------------
-" Set the linters to use
-" let g:ale_linters = {
-" \   'go': ['gopls', 'golint', 'go vet'],
-" \   'ruby': ['ruby', 'rubocop'],
-" \   'eruby': [],
-" \   'vue': ['eslint'],
-" \   'javascript': ['eslint']
-" \}
-
-" " Set the fixers 
-" let g:ale_fixers = {
-" \   'javascript': ['prettier'],
-" \   'vue': ['prettier'],
-" \   'ruby': ['rubocop'],
-" \}
-
-" " auto-fix on save
-" let g:ale_fix_on_save = 1
-
-" " Set error msg format
-" let g:ale_echo_msg_error_str = 'Error'
-" let g:ale_echo_msg_warning_str = 'Warn'
-" let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
-
-" " Disable auto linting
-" let g:ale_lint_on_text_changed = 'never'
-
-" " Error and warning signs.
-" let g:ale_sign_error = '>>'
-
-" " Enable integration with airline.
-" let g:airline#extensions#ale#enabled = 1
 
 "----------------------- nvim compe ----------------------
 set completeopt=menuone,noselect
