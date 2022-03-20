@@ -315,6 +315,15 @@ autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 lua << EOF
 
+-- lsp diagnostic settings
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+  }
+)
+
 -- set up lsp snippet capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
