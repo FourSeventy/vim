@@ -47,9 +47,6 @@
 [submodule "pack/plugins/start/nvim-lspconfig"]
 	path = pack/plugins/start/nvim-lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
-[submodule "pack/plugins/start/vim-go"]
-	path = pack/plugins/start/vim-go
-	url = git@github.com:fatih/vim-go.git
 [submodule "pack/plugins/start/lsp_signature.nvim"]
 	path = pack/plugins/start/lsp_signature.nvim
 	url = git@github.com:ray-x/lsp_signature.nvim.git
@@ -59,9 +56,6 @@
 [submodule "pack/plugins/start/vim-vue-plugin"]
 	path = pack/plugins/start/vim-vue-plugin
 	url = git@github.com:leafOfTree/vim-vue-plugin.git
-[submodule "pack/plugins/start/ale"]
-	path = pack/plugins/start/ale
-	url = git@github.com:dense-analysis/ale.git
 [submodule "pack/plugins/start/friendly-snippets"]
 	path = pack/plugins/start/friendly-snippets
 	url = git@github.com:rafamadriz/friendly-snippets.git

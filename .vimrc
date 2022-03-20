@@ -111,10 +111,7 @@ set foldmethod=manual
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "hotkey to close quickfix and location list windows
-nmap <leader>r :ccl <CR> <bar> :lclose <CR>
-
-"hotkey to open location list window
-nmap <leader>e :lopen <CR>
+nmap <leader>x :ccl <CR> <bar> :lclose <CR>
 
 "hotkey to open a new tab
 nmap <leader>t :tabnew <CR>
@@ -203,48 +200,48 @@ nmap <leader>, <Plug>AirlineSelectNextTab
 let g:airline#extensions#tabline#fnamemod = ':t'"
 
 "------------------ Go-vim ----------------------------
-"enable highlighting
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_trailing_whitespace_error=0
+""enable highlighting
+"let g:go_highlight_functions = 1
+"let g:go_highlight_methods = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_types = 1
+"let g:go_highlight_operators = 1
+"let g:go_highlight_build_constraints = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_trailing_whitespace_error=0
 
-"fmt fail silent
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_autosave = 1
-let g:go_imports_autosave = 0
-let g:go_fmt_command = "gopls"
-let g:go_imports_mode = 'gopls'
-let g:go_fmt_experimental = 0
+""fmt fail silent
+"let g:go_fmt_fail_silently = 0
+"let g:go_fmt_autosave = 1
+"let g:go_imports_autosave = 0
+"let g:go_fmt_command = "gopls"
+"let g:go_imports_mode = 'gopls'
+"let g:go_fmt_experimental = 0
 
-"proper tab settings for go
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+""proper tab settings for go
+"autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 
-"Run commands such as go run for the current file with <leader>r or go test for the current package with <leader>t. 
-"Display beautifully annotated source code to see which functions are covered with <leader>c.
-au FileType go nmap <leader>gr <Plug>(go-run)
-au FileType go nmap <leader>gt <Plug>(go-test)
-au FileType go nmap <leader>gT <Plug>(go-test-func)
-au FileType go nmap <leader>gc :GoCoverageToggle<CR>
-au FileType go nmap <leader>gi :GoInfo<CR>
-au FileType go nmap <leader>gd :GoDoc<CR>
-au FileType go nmap <leader>gf :GoDef<CR>
+""Run commands such as go run for the current file with <leader>r or go test for the current package with <leader>t. 
+""Display beautifully annotated source code to see which functions are covered with <leader>c.
+"au FileType go nmap <leader>gr <Plug>(go-run)
+"au FileType go nmap <leader>gt <Plug>(go-test)
+"au FileType go nmap <leader>gT <Plug>(go-test-func)
+"au FileType go nmap <leader>gc :GoCoverageToggle<CR>
+"au FileType go nmap <leader>gi :GoInfo<CR>
+"au FileType go nmap <leader>gd :GoDoc<CR>
+"au FileType go nmap <leader>gf :GoDef<CR>
 
-"Open godoc in a browser
-au FileType go nmap <leader>gb <Plug>(go-doc-browser)
+""Open godoc in a browser
+"au FileType go nmap <leader>gb <Plug>(go-doc-browser)
 
-"use gopls for def and info
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+""use gopls for def and info
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
 
-"code folding
-au FileType go setlocal foldmethod=indent
-" let g:go_fold_enable = ['block']
-au FileType go setlocal foldnestmax=1
+""code folding
+"au FileType go setlocal foldmethod=indent
+"" let g:go_fold_enable = ['block']
+"au FileType go setlocal foldnestmax=1
 
 "----------------- Ack.vim ----------------------------
 if executable('ag')
@@ -272,37 +269,37 @@ let g:vim_vue_plugin_config = {
 
 "----------------- Ale  --------------------------
 " Set the linters to use
-let g:ale_linters = {
-\   'go': ['gopls', 'golint', 'go vet'],
-\   'ruby': ['ruby', 'rubocop'],
-\   'eruby': [],
-\   'vue': ['eslint'],
-\   'javascript': ['eslint']
-\}
+" let g:ale_linters = {
+" \   'go': ['gopls', 'golint', 'go vet'],
+" \   'ruby': ['ruby', 'rubocop'],
+" \   'eruby': [],
+" \   'vue': ['eslint'],
+" \   'javascript': ['eslint']
+" \}
 
-" Set the fixers 
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'vue': ['prettier'],
-\   'ruby': ['rubocop'],
-\}
+" " Set the fixers 
+" let g:ale_fixers = {
+" \   'javascript': ['prettier'],
+" \   'vue': ['prettier'],
+" \   'ruby': ['rubocop'],
+" \}
 
-" auto-fix on save
-let g:ale_fix_on_save = 1
+" " auto-fix on save
+" let g:ale_fix_on_save = 1
 
-" Set error msg format
-let g:ale_echo_msg_error_str = 'Error'
-let g:ale_echo_msg_warning_str = 'Warn'
-let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
+" " Set error msg format
+" let g:ale_echo_msg_error_str = 'Error'
+" let g:ale_echo_msg_warning_str = 'Warn'
+" let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
 
-" Disable auto linting
-let g:ale_lint_on_text_changed = 'never'
+" " Disable auto linting
+" let g:ale_lint_on_text_changed = 'never'
 
-" Error and warning signs.
-let g:ale_sign_error = '>>'
+" " Error and warning signs.
+" let g:ale_sign_error = '>>'
 
-" Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
+" " Enable integration with airline.
+" let g:airline#extensions#ale#enabled = 1
 
 "----------------------- nvim compe ----------------------
 set completeopt=menuone,noselect
@@ -389,6 +386,11 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
 "------------------------ lsp setup --------------------------
+
+" Auto-format *.go (go) files prior to saving them
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 1000)
+
 lua << EOF
 
 -- set up lsp snippet capabilities
@@ -403,10 +405,10 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 
 -- set up golang lsp server
-local golang_setup = {
-  -- configure lsp_signature
+require'lspconfig'.gopls.setup{
   on_attach = function(client, bufnr)
-    cfg = {
+    -- configure lsp_signature
+    require'lsp_signature'.on_attach{
       bind = true, -- This is mandatory, otherwise border config won't get registered.
                   -- If you want to hook lspsaga or other signature handler, pls set to false
       floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
@@ -424,23 +426,44 @@ local golang_setup = {
       },
       extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
     }
-    require'lsp_signature'.on_attach(cfg)
+
+  --show definition
+  vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
+  --jump to definition
+  vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
+  --jump to type definition
+  vim.keymap.set("n","gt", vim.lsp.buf.type_definition, {buffer=0})
+  --jump to next or previous diagnostic message
+  vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
+  vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
+  --rename
+  vim.keymap.set("n","<leader>rr", vim.lsp.buf.rename, {buffer=0})
+  --code actions
+  vim.keymap.set("n","<leader>ra", vim.lsp.buf.code_action, {buffer=0})
   end,
   capabilities = capabilities
 }
 
-require'lspconfig'.gopls.setup(golang_setup)
 
-require'lspconfig'.solargraph.setup{}
+-- ruby lsp setup
+require'lspconfig'.solargraph.setup{
+  on_attach = function(client, bufnr)
+  --show definition
+  vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
+  --jump to definition
+  vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
+  --jump to type definition
+  vim.keymap.set("n","gt", vim.lsp.buf.type_definition, {buffer=0})
+  --jump to next or previous diagnostic message
+  vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
+  vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
+  --rename
+  vim.keymap.set("n","<leader>rr", vim.lsp.buf.rename, {buffer=0})
+  --code actions
+  vim.keymap.set("n","<leader>ra", vim.lsp.buf.code_action, {buffer=0})
+  end
+}
 
-
--- disable the lsp diagnostics because ALE is doing this
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
-  signs = false,
-  underline = false,
-  update_in_insert = false,
-})
 EOF
 
 

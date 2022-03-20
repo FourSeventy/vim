@@ -51,7 +51,7 @@ git submodule add <git repo>
 
 ### Remove a plugin
 ```
-git submodule deinit vim/pack/shapeshed/start/vim-airline
-git rm vim/pack/shapeshed/start/vim-airline
-rm -Rf .git/modules/vim/pack/shapeshed/start/vim-airline
+git submodule deinit -f pack/plugins/start/vim-go
+git rm pack/plugins/start/vim-go
+rm -Rf .git/modules/pack/plugins/start/vim-go
 ```
