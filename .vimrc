@@ -363,7 +363,7 @@ require'lspconfig'.gopls.setup{
   --jump to definition
   vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
   --jump to type definition
-  vim.keymap.set("n","gt", vim.lsp.buf.type_definition, {buffer=0})
+  vim.keymap.set("n","gy", vim.lsp.buf.type_definition, {buffer=0})
   --jump to next or previous diagnostic message
   vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
   vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
@@ -384,7 +384,7 @@ require'lspconfig'.solargraph.setup{
   --jump to definition
   vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
   --jump to type definition
-  vim.keymap.set("n","gt", vim.lsp.buf.type_definition, {buffer=0})
+  vim.keymap.set("n","gy", vim.lsp.buf.type_definition, {buffer=0})
   --jump to next or previous diagnostic message
   vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
   vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
