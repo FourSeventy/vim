@@ -5,12 +5,11 @@
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
 6. Install the font in the ./fonts directory, and configure your terminal to use it.
 7. Install silver searcher `brew install the_silver_searcher`
-8. Install go binaries `:GoInstallBinaries` 
-9. Install gopls language server `GO111MODULE=on go get golang.org/x/tools/gopls@latest`
-10. Install ruby language server `gem install solargraph`
+8. Install gopls language server `go install golang.org/x/tools/gopls@latest`
+9. Install ruby language server `gem install solargraph`
     a.) Generate YARD documentation  `solargraph bundle` (in root of project)
     b.) Enhance rails intellisense https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e
-11. Install fzy `brew install fzy` 
+10. Install fzy `brew install fzy` 
 
 ## Plugin Description
 
