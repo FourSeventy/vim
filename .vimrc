@@ -143,9 +143,6 @@ set noshowcmd
 "always show sign column
 set signcolumn=yes
 
-"hide tildes on blank lines
-hi NonText guifg=bg
-
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
