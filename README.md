@@ -3,13 +3,12 @@
 2. Clone vim repo to ~/.vim `git clone git@github.com:FourSeventy/vim.git .vim`
 3. Initialize vim submodules `cd ~/.vim/pack/plugins/start; git submodule init; git submodule update`
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
-6. Install the font in the ./fonts directory, and configure your terminal to use it.
-7. Install silver searcher `brew install the_silver_searcher`
-8. Install gopls language server `go install golang.org/x/tools/gopls@latest`
-9. Install ruby language server `gem install solargraph`
+5. Install the font in the ./fonts directory, and configure your terminal to use it.
+6. Install gopls language server `go install golang.org/x/tools/gopls@latest`
+7. Install ruby language server `gem install solargraph`
     a.) Generate YARD documentation  `solargraph bundle` (in root of project)
     b.) Enhance rails intellisense https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e
-10. Install fzy `brew install fzy` 
+8. Install ripgrep for telescope `sudo port install ripgrep`
 
 ## Plugin Description
 
@@ -25,13 +24,28 @@ https://github.com/hrsh7th/nvim-compe
 
 nvim-compe handles autocompletion and snippets. It uses the neovim LSP to get completions.
 
+### nvim-telescope
+https://github.com/nvim-telescope/telescope.nvim
 
-### vim-vsnip && friendly-snippets
+telescope.nvim is a highly extendable fuzzy finder. We used it for for searching and opening files, grepping
+in files, grepping git commit history, searching through lsp diagnostic errors and more.
+
+Good video about it: https://www.youtube.com/watch?v=guxLXcG1kzQ
+
+Depencencies:
+nvim-lua/plenary.nvim
+BurntSushi/ripgrep --required for fast grepping
+
+### vim-vsnip
 https://github.com/hrsh7th/vim-vsnip
 
 Snippet functionality
 
+Depencencies: 
+friendly-snippets
 
+
+## Maintenance
 
 ### Add a plugin
 `

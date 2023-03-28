@@ -144,10 +144,6 @@ set signcolumn=yes
 " Plugins
 " -----------------------------------------------
 
-"------------------ vim-picker ------------------
-nmap <unique> <leader>o :PickerEdit<CR>
-
-
 
 "------------------ NERDTree -----------------------
 "toggle
@@ -199,14 +195,6 @@ nmap <leader>, <Plug>AirlineSelectNextTab
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
 
-"----------------- Ack.vim ----------------------------
-if executable('ag')
-  " Use ag over grep
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-" Search for word under cursor
-nmap <leader>f :Ack!<CR>
 
 "---------------- vim-vue-plugin -----------------------
 let g:vim_vue_plugin_config = { 
@@ -222,6 +210,36 @@ let g:vim_vue_plugin_config = {
       \'foldexpr': 0,
       \'debug': 0,
       \}
+
+"----------------------- Telescope -----------------------
+"search for files
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+"grep for strings in files
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"grep git commits
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+"grep lsp errors
+nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    prompt_prefix = "> ",
+    file_ignore_patterns = {"node_modules", "vendor"}, -- ignore folders we don't want to search in
+    mappings = {
+          i = {
+            ["<C-j>"] = "move_selection_next",
+            ["<C-k>"] = "move_selection_previous",
+          }
+        }
+    }
+}
+
+EOF
+
+
 
 "----------------------- nvim compe ----------------------
 set completeopt=menuone,noselect
