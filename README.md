@@ -9,6 +9,20 @@
     a.) Generate YARD documentation  `solargraph bundle` (in root of project)
     b.) Enhance rails intellisense https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e
 8. Install ripgrep for telescope `sudo port install ripgrep`
+9. Install treesitter parsers
+```
+:TSInstall go
+:TSInstall gomod
+:TSInstall gosum
+:TSInstall ruby
+:TSInstall html
+:TSInstall vue
+:TSInstall sql
+:TSInstall yaml
+:TSInstall javascript
+:TSInstall vim
+:TSInstall lua
+```
 
 ## Plugin Description
 
@@ -43,6 +57,14 @@ Snippet functionality
 
 Depencencies: 
 friendly-snippets
+
+### nvim-treesitter
+https://github.com/nvim-treesitter/nvim-treesitter
+
+Better syntax highlighting and folding
+Add languages with :TSInstall
+To keep definitions updated run :TSUpdate
+
 
 
 ## Maintenance

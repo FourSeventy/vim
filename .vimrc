@@ -15,10 +15,13 @@ filetype indent plugin on
 syntax enable
 
 "color scheme
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_material_background = 'medium'
 set background=dark
 set termguicolors
+let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_disable_italic_comment = 1
+let g:gruvbox_material_enable_bold = 1
+colorscheme gruvbox-material
 
 " set line numbers
 set number
@@ -103,7 +106,7 @@ noremap <Leader>W :w !sudo tee % > /dev/null
 "json formatting
 nmap <leader>y :%!python -m json.tool <CR>
 
-"enable manual code folding
+"enable code folding
 set foldenable
 set foldmethod=manual
 
@@ -140,6 +143,9 @@ set noshowcmd
 "always show sign column
 set signcolumn=yes
 
+"hide tildes on blank lines
+hi NonText guifg=bg
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
@@ -166,7 +172,7 @@ autocmd VimEnter * if !argc() | NERDTree | endif
 "------------------ Airline ---------------------------
 " Set font and theme
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
+let g:airline_theme = 'gruvbox_material'
 
 " Always display status line
 set laststatus=2
@@ -196,21 +202,6 @@ nmap <leader>, <Plug>AirlineSelectNextTab
 let g:airline#extensions#tabline#fnamemod = ':t'"
 
 
-"---------------- vim-vue-plugin -----------------------
-let g:vim_vue_plugin_config = { 
-      \'syntax': {
-      \   'template': ['html'],
-      \   'script': ['javascript'],
-      \   'style': ['scss'],
-      \},
-      \'full_syntax': [],
-      \'initial_indent': [],
-      \'attribute': 0,
-      \'keyword': 0,
-      \'foldexpr': 0,
-      \'debug': 0,
-      \}
-
 "----------------------- Telescope -----------------------
 "search for files
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -236,7 +227,31 @@ require('telescope').setup{
         }
     }
 }
+EOF
 
+"----------------------- TreeSitter -----------------------
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "go", "gomod", "gosum", "ruby", "html", "vue", "sql", "yaml", "javascript", "vim", "lua" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = false,
+
+  highlight = {
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
 
 
