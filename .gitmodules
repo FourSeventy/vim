@@ -62,3 +62,6 @@
 [submodule "pack/plugins/start/vim-matchup"]
 	path = pack/plugins/start/vim-matchup
 	url = https://github.com/andymass/vim-matchup.git
+[submodule "pack/plugins/start/nvim-ts-context-commentstring"]
+	path = pack/plugins/start/nvim-ts-context-commentstring
+	url = https://github.com/JoosepAlviste/nvim-ts-context-commentstring.git

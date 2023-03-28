@@ -253,9 +253,12 @@ require'nvim-treesitter.configs'.setup {
   },
   matchup = {
     enable = true,              -- mandatory, false will disable the whole extension
-    disable = { "c"},  -- optional, list of language that will be disabled
+    --disable = { "c"},  -- optional, list of language that will be disabled
     -- [options]
   },
+  context_commentstring = {
+    enable = true
+  }
 }
 EOF
 
