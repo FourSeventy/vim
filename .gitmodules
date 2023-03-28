@@ -4,9 +4,6 @@
 [submodule "pack/plugins/start/auto-pairs"]
 	path = pack/plugins/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "pack/plugins/start/matchit.zip"]
-	path = pack/plugins/start/matchit.zip
-	url = https://github.com/vim-scripts/matchit.zip
 [submodule "pack/plugins/start/nerdtree"]
 	path = pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -62,3 +59,6 @@
 [submodule "pack/plugins/start/gruvbox-material"]
 	path = pack/plugins/start/gruvbox-material
 	url = https://github.com/sainnhe/gruvbox-material.git
+[submodule "pack/plugins/start/vim-matchup"]
+	path = pack/plugins/start/vim-matchup
+	url = https://github.com/andymass/vim-matchup.git

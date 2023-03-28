@@ -65,6 +65,13 @@ Better syntax highlighting and folding
 Add languages with :TSInstall
 To keep definitions updated run :TSUpdate
 
+###vim-matchup
+https://github.com/andymass/vim-matchup
+
+vim-matchup extends vim's % to make it work much more accurately. It integrates with
+treesitter to make sure it works well.
+
+
 
 
 ## Maintenance
