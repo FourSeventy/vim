@@ -201,6 +201,21 @@ nmap <leader>, <Plug>AirlineSelectNextTab
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'"
 
+" get rid of file encoding section
+let g:airline_section_y = ''
+let g:airline_skip_empty_sections = 1
+
+" Customize the look of the line and column indicator
+let g:airline_section_z = '%3p%% %3l/%L:%3v'
+
+" Customize vim airline per filetype
+" 'nerdtree'  - Hide nerdtree status line
+" 'list'      - Only show file type plus current line number out of total
+let g:airline_filetype_overrides = {
+  \ 'nerdtree': [ get(g:, 'NERDTreeStatusline', ''), '' ],
+  \ 'list': [ '%y', '%l/%L'],
+  \ }
+
 
 "----------------------- Telescope -----------------------
 "search for files
