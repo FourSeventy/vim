@@ -221,10 +221,10 @@ let g:airline_filetype_overrides = {
 nnoremap <leader>U :UndotreeToggle<CR>
 
 "----------------------- Copilot -------------------------
-imap <C-[> <Plug>(copilot-suggest)
-imap <C-]> <Plug>(copilot-next)
+imap <C-,> <Plug>(copilot-suggest)
+imap <C-.> <Plug>(copilot-next)
 " imap <M-,> <Plug>(copilot-previous)
-imap <C-\> <Plug>(copilot-dismiss)
+imap <C-/> <Plug>(copilot-dismiss)
 
 "----------------------- Telescope -----------------------
 "search for files
