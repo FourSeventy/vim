@@ -121,10 +121,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 nmap <leader>x :ccl <CR> <bar> :lclose <CR>
 
 "hotkey to open a new tab
-nmap <leader>t :tabnew <CR>
+nnoremap <C-W>t :tabnew<CR>
 
 "hotkey to close a tab
-nmap <leader>c :tabclose <CR>
+nnoremap <C-W>c :tabclose<CR>
 
 "remove pipe characters in vertical split gutter
 set fillchars+=vert:\ 
@@ -219,6 +219,12 @@ let g:airline_filetype_overrides = {
 
 "----------------------- Undo tree -----------------------
 nnoremap <leader>U :UndotreeToggle<CR>
+
+"----------------------- Copilot -------------------------
+imap <C-[> <Plug>(copilot-suggest)
+imap <C-]> <Plug>(copilot-next)
+" imap <M-,> <Plug>(copilot-previous)
+imap <C-\> <Plug>(copilot-dismiss)
 
 "----------------------- Telescope -----------------------
 "search for files
@@ -460,7 +466,6 @@ EOF
 "------------------- golang autotest runner ----------------------
 
 lua << EOF
---https://www.youtube.com/watch?v=cf72gMBrsI0&list=PL_5PhVwRddobuh6sxDvSTGXiqmWxB7ZAf&index=3&t=750s
 
 local test_function_query_string = [[
 (
@@ -480,19 +485,6 @@ local test_function_query_string = [[
  (#eq? @name "%s")
 )
 ]]
-
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
 
 local find_test_line = function(go_bufnr, name)
   local formatted = string.format(test_function_query_string, name)
@@ -532,105 +524,85 @@ local mark_success = function(state, entry)
   state.tests[make_key(entry)].success = entry.Action == "pass"
 end
 
--- local display_golang_output = function(state, bufnr) end
-
 local ns = vim.api.nvim_create_namespace "live-tests"
 local group = vim.api.nvim_create_augroup("teej-automagic", { clear = true })
-local gotest_enabled = false
 
-
---detaches autocmd from buffer
-local disable_go_testing = function(bufnr)
+local clear_go_testing = function(bufnr)
   -- clear highlights and marks from buffer
   vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
   --clear diagnostics
   vim.diagnostic.set(ns, bufnr, {}, {})
-  -- detaches autocmd
-  vim.api.nvim_clear_autocmds({
-    group = group,
-    pattern = "*.go",
-  })
 end
 
---attaches autocmd to buffer that will run go tests on save
-local enable_go_testing = function(bufnr, command)
+local run_go_testing = function(bufnr, command)
   local state = {
     bufnr = bufnr,
     tests = {},
   }
 
-  --creates an autocommand that runs when the buffer is written to
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    group = group,
-    pattern = "*.go",  --only runs on go files
-    callback = function()
-      vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+  --clear old highlights and marks from buffer
+  vim.api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
-      state = {
-        bufnr = bufnr,
-        tests = {},
-      }
+  --start background job that actually runs the tests
+  vim.fn.jobstart(command, {
+    stdout_buffered = true,
+    -- when we get data back from the test, we'll call this function to parse it
+    on_stdout = function(_, data)
 
-      --start background job that actually runs the tests
-      vim.fn.jobstart(command, {
-        stdout_buffered = true,
-        -- when we get data back from the test, we'll call this function to parse it
-        on_stdout = function(_, data)
+      -- if we didnt get any data, then we're done
+      if not data then
+        return
+      end
 
-          if not data then
+      -- parse the data
+      for _, line in ipairs(data) do
+        local decoded = vim.json.decode(line)
+        if decoded.Action == "run" then
+          add_golang_test(state, decoded)
+        elseif decoded.Action == "output" then
+          if not decoded.Test then
             return
           end
 
-          for _, line in ipairs(data) do
-            local decoded = vim.json.decode(line)
-            if decoded.Action == "run" then
-              add_golang_test(state, decoded)
-            elseif decoded.Action == "output" then
-              if not decoded.Test then
-                return
-              end
+          add_golang_output(state, decoded)
+        elseif decoded.Action == "pass" or decoded.Action == "fail" then
+          mark_success(state, decoded)
 
-              add_golang_output(state, decoded)
-            elseif decoded.Action == "pass" or decoded.Action == "fail" then
-              mark_success(state, decoded)
-
-              local test = state.tests[make_key(decoded)]
-              if test.success and test.line then
-                local text = { "✓" }
-                vim.api.nvim_buf_set_extmark(bufnr, ns, test.line, 0, {
-                  virt_text = { text },
-                })
-              end
-            elseif decoded.Action == "pause" or decoded.Action == "cont" then
-              -- Do nothing
-            else
-              error("Failed to handle" .. vim.inspect(data))
-            end
+          local test = state.tests[make_key(decoded)]
+          if test.success and test.line then
+            local text = { "✓ Pass" }
+            vim.api.nvim_buf_set_extmark(bufnr, ns, test.line, 0, {
+              virt_text = { text },
+            })
           end
-        end,
+        elseif decoded.Action == "pause" or decoded.Action == "cont" then
+          -- Do nothing
+        else
+          error("Failed to handle" .. vim.inspect(data))
+        end
+      end
+    end,
 
-        --once all the tests are done running, add to diagnostics the ones that failed
-        on_exit = function()
-          local failed = {}
-          for _, test in pairs(state.tests) do
-            if test.line then
-              if not test.success then
-                table.insert(failed, {
-                  bufnr = bufnr,
-                  lnum = test.line,
-                  col = 0,
-                  severity = vim.diagnostic.severity.ERROR,
-                  source = "go-test",
-                  message = "Test Failed",
-                  user_data = {},
-                })
-              end
-            end
+    --once all the tests are done running, add to diagnostics the ones that failed
+    on_exit = function()
+      local failed = {}
+      for _, test in pairs(state.tests) do
+        if test.line then
+          if not test.success then
+            table.insert(failed, {
+              bufnr = bufnr,
+              lnum = test.line,
+              col = 0,
+              severity = vim.diagnostic.severity.ERROR,
+              source = "go-test",
+              message = "Test Failed",
+              user_data = {},
+            })
           end
+        end
+      end
 
-          vim.diagnostic.set(ns, bufnr, failed, {})
-        end,
-      })
+      vim.diagnostic.set(ns, bufnr, failed, {})
     end,
   })
 
@@ -646,15 +618,26 @@ local enable_go_testing = function(bufnr, command)
     end, {})
 end
 
---main user command that will enable and disable the testing
+--main user command that will run testing
 vim.api.nvim_create_user_command("GoTest", function()
-  gotest_enabled = not gotest_enabled
+    if vim.fn.expand("%:e") ~= "go" then
+      print("Not a go file")
+      return
+    end
 
-  if gotest_enabled then
-    enable_go_testing(vim.api.nvim_get_current_buf(), "(cd " .. vim.fn.expand("%:p:h") .. " && go test ./... -v -json)" )
-  else
-    disable_go_testing(vim.api.nvim_get_current_buf())
-  end
+    run_go_testing(vim.api.nvim_get_current_buf(), "(cd " .. vim.fn.expand("%:p:h") .. " && go test ./... -v -json)" )
 end, {})
 
+--user command that will clear testing results
+vim.api.nvim_create_user_command("GoTestClear", function()
+    clear_go_testing(vim.api.nvim_get_current_buf())
+end, {})
+
+--keymaps
+vim.api.nvim_set_keymap('n', '<leader>tg', '<cmd>GoTest<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tc', '<cmd>GoTestClear<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>GoTestDiag<CR>', { noremap = true, silent = true })
+
 EOF
+
+
