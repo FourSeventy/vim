@@ -217,6 +217,8 @@ let g:airline_filetype_overrides = {
   \ 'list': [ '%y', '%l/%L'],
   \ }
 
+"----------------------- Undo tree -----------------------
+nnoremap <leader>U :UndotreeToggle<CR>
 
 "----------------------- Telescope -----------------------
 "search for files
