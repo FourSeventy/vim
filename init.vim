@@ -287,6 +287,11 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
+"----------------------- vsnip  ----------------------
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.vue = ['html']
+let g:vsnip_filetypes.ruby = ['rails']
+
 
 "----------------------- nvim compe ----------------------
 set completeopt=menuone,noselect
