@@ -231,6 +231,8 @@ imap <C-/> <Plug>(copilot-dismiss)
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 "grep for strings in files
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"grep for string under cursor
+nnoremap <leader>fs <cmd>Telescope grep_string<cr>
 "grep git commits
 nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 "grep lsp errors
