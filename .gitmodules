@@ -50,9 +50,6 @@
 [submodule "pack/plugins/start/telescope.nvim"]
 	path = pack/plugins/start/telescope.nvim
 	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "pack/plugins/start/copilot.vim"]
-	path = pack/plugins/start/copilot.vim
-	url = https://github.com/github/copilot.vim
 [submodule "pack/plugins/start/nvim-treesitter"]
 	path = pack/plugins/start/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git

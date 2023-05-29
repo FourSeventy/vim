@@ -220,11 +220,6 @@ let g:airline_filetype_overrides = {
 "----------------------- Undo tree -----------------------
 nnoremap <leader>U :UndotreeToggle<CR>
 
-"----------------------- Copilot -------------------------
-imap <C-,> <Plug>(copilot-suggest)
-imap <C-.> <Plug>(copilot-next)
-" imap <M-,> <Plug>(copilot-previous)
-imap <C-/> <Plug>(copilot-dismiss)
 
 "----------------------- Telescope -----------------------
 "search for files
