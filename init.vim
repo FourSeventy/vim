@@ -147,6 +147,25 @@ set noshowcmd
 "always show sign column
 set signcolumn=yes
 
+" Initialize a global variable for tracking diff mode status
+let g:is_diff_mode_active = 0
+
+function! ToggleDiff()
+    " Check the global diff mode status
+    if g:is_diff_mode_active
+        " If diff mode is active, turn it off
+        exe "windo diffoff"
+        let g:is_diff_mode_active = 0
+    else
+        " If diff mode is not active, turn it on for all windows
+        exe "windo diffthis"
+        let g:is_diff_mode_active = 1
+    endif
+endfunction
+
+" Map <leader>d to toggle diff mode
+nnoremap <leader>d :call ToggleDiff()<CR>
+
 "------------------------------------------------
 " Plugins
 " -----------------------------------------------
