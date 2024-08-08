@@ -43,6 +43,7 @@ This plugin has some dependency plugins that it uses as completion sources. Name
 * hrsh7th/cmp-nvim-lsp
 * hrsh7th/cmp-buffer
 * hrsh7th/cmp-vsnip
+* hrsh7th/cmp-calc
 
 
 ### nvim-telescope

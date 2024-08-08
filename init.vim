@@ -253,6 +253,7 @@ nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"<C-q> will dump search results into quickfix
 
 lua << EOF
 require('telescope').setup{
