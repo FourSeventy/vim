@@ -1,3 +1,7 @@
+## Intro
+Config tested up to NVIM v0.10.1
+
+
 ## Setup
 1. Install neovim https://github.com/neovim/neovim/blob/master/INSTALL.md
 2. Clone vim repo to ~/.vim `git clone git@github.com:FourSeventy/vim.git .vim`
