@@ -306,88 +306,44 @@ let g:vsnip_filetypes.vue = ['html']
 let g:vsnip_filetypes.ruby = ['rails']
 
 
-"----------------------- nvim compe ----------------------
-set completeopt=menuone,noselect
 
-let g:compe = {}
-let g:compe.enabled = v:true
-" Disable compe for text files or markdown files
-au! Filetype text call compe#setup({'enabled': v:false})
-au! Filetype markdown call compe#setup({'enabled': v:false})
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.resolve_timeout = 800
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
+"----------------------- nvim-cmp ----------------------
+lua <<EOF
+  local cmp = require'cmp'
 
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.vsnip = v:true
-" let g:compe.source.nvim_lua = v:true
-" let g:compe.source.ultisnips = v:true
-" let g:compe.source.luasnip = v:true
-" let g:compe.source.emoji = v:true
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.select_prev_item(),
+      ['<C-f>'] = cmp.mapping.select_next_item(),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<C-a>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'calc' },
+    }, {
+      { name = 'buffer' },
+    })
+  })
 
-
-" inoremap <silent><expr> <C-Space> compe#complete()
-" inoremap <silent><expr> <C-a>      compe#confirm('<C-a>')
-lua << EOF
-vim.api.nvim_set_keymap("i", "<C-a>", "compe#confirm({ 'keys': '<C-a>', 'select': v:true })", { expr = true })
-EOF
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
-
-"set up tab and s-tab mappings (idk why it takes all the below code to do this)
-lua << EOF
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn['vsnip#available'](1) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    -- If <S-Tab> is not working in your terminal, change it to <C-h>
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+  -- Set up lspconfig.
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- set up lsp for gopls
+  require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
 EOF
 
 "------------------------ lsp setup --------------------------
@@ -458,25 +414,6 @@ require'lspconfig'.gopls.setup{
   capabilities = capabilities
 }
 
-
--- ruby lsp setup
-require'lspconfig'.solargraph.setup{
-  on_attach = function(client, bufnr)
-  --show definition
-  vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
-  --jump to definition
-  vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
-  --jump to type definition
-  vim.keymap.set("n","gy", vim.lsp.buf.type_definition, {buffer=0})
-  --jump to next or previous diagnostic message
-  vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
-  vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
-  --rename
-  vim.keymap.set("n","<leader>rr", vim.lsp.buf.rename, {buffer=0})
-  --code actions
-  vim.keymap.set("n","<leader>ra", vim.lsp.buf.code_action, {buffer=0})
-  end
-}
 
 EOF
 

@@ -9,11 +9,8 @@ Config tested up to NVIM v0.10.1
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
 5. Install the font in the ./fonts directory, and configure your terminal to use it.
 6. Install gopls language server `go install golang.org/x/tools/gopls@latest`
-7. Install ruby language server `gem install solargraph`
-    a.) Generate YARD documentation  `solargraph bundle` (in root of project)
-    b.) Enhance rails intellisense https://gist.github.com/castwide/28b349566a223dfb439a337aea29713e
-8. Install ripgrep for telescope `sudo port install ripgrep`
-9. Install treesitter parsers
+7. Install ripgrep for telescope `sudo port install ripgrep`
+8. Install treesitter parsers
 ```
 :TSInstall go
 :TSInstall gomod
@@ -37,10 +34,16 @@ with neovim 0.5 LSP(language server protocol) is built in. The plugin nvim-lspco
 makes it easy to connect the LSP to language servers out of the box. Our autocompletion uses the built in lsp.
 Ale should use the buit in lsp but I don't have that set up correctly yet.
 
-### nvim-compe
-https://github.com/hrsh7th/nvim-compe
+### nvim-cmp
+https://github.com/hrsh7th/nvim-cmp
 
-nvim-compe handles autocompletion and snippets. It uses the neovim LSP to get completions.
+nvim-cmp handles autocompletion and snippets. It uses the neovim LSP to get completions.
+
+This plugin has some dependency plugins that it uses as completion sources. Namely:
+* hrsh7th/cmp-nvim-lsp
+* hrsh7th/cmp-buffer
+* hrsh7th/cmp-vsnip
+
 
 ### nvim-telescope
 https://github.com/nvim-telescope/telescope.nvim
