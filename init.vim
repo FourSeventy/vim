@@ -295,9 +295,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,              -- mandatory, false will disable the whole extension
     --disable = { "c"},  -- optional, list of language that will be disabled
     -- [options]
-  },
-  context_commentstring = {
-    enable = true
   }
 }
 EOF
@@ -396,8 +393,8 @@ EOF
 "------------------------ lsp setup --------------------------
 
 " Auto-format *.go (go) files prior to saving them
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.rb lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.go lua vim.lsp.buf.format()
+autocmd BufWritePre *.rb lua vim.lsp.buf.format()
 
 lua << EOF
 

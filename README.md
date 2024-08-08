@@ -1,5 +1,5 @@
 ## Setup
-1. Install neovim https://github.com/neovim/neovim/wiki/Installing-Neovim
+1. Install neovim https://github.com/neovim/neovim/blob/master/INSTALL.md
 2. Clone vim repo to ~/.vim `git clone git@github.com:FourSeventy/vim.git .vim`
 3. Initialize vim submodules `cd ~/.vim/pack/plugins/start; git submodule init; git submodule update`
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
@@ -85,9 +85,16 @@ git submodule add <git repo>
 ### Update plugins
 `git submodule update --recursive --remote`
 
+
 ### Remove a plugin
 ```
 git submodule deinit -f pack/plugins/start/vim-go
 git rm pack/plugins/start/vim-go
 rm -Rf .git/modules/pack/plugins/start/vim-go
+```
+
+
+### Update treesitter parsers
+```
+:TSUpdate
 ```
