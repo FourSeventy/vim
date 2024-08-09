@@ -336,7 +336,17 @@ lua <<EOF
       { name = 'calc' },
     }, {
       { name = 'buffer' },
-    })
+    }),
+    enabled = function()
+          -- disable completion in comments
+          local context = require 'cmp.config.context'
+          if vim.api.nvim_get_mode().mode == 'c' then -- keep command mode completion enabled when cursor is in a comment
+            return true
+          else
+            return not context.in_treesitter_capture("comment") 
+              and not context.in_syntax_group("Comment")
+          end
+        end
   })
 
   -- Set up lspconfig.
@@ -345,6 +355,16 @@ lua <<EOF
   require('lspconfig')['gopls'].setup {
     capabilities = capabilities
   }
+
+  -- disable for txt files
+  vim.api.nvim_create_autocmd("BufReadPre", {
+    pattern = "*.txt",
+    callback = function()
+      cmp.setup.buffer {
+        sources = cmp.config.sources({})
+        }
+    end,
+  })
 EOF
 
 "------------------------ lsp setup --------------------------
