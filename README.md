@@ -8,9 +8,8 @@ Config tested up to NVIM v0.10.1
 3. Initialize vim submodules `cd ~/.vim/pack/plugins/start; git submodule init; git submodule update`
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
 5. Install the font in the ./fonts directory, and configure your terminal to use it.
-6. Install gopls language server `go install golang.org/x/tools/gopls@latest`
-7. Install ripgrep for telescope `sudo port install ripgrep`
-8. Install treesitter parsers
+6. Install ripgrep for telescope `sudo port install ripgrep`
+7. Install treesitter parsers
 ```
 :TSInstall go
 :TSInstall gomod
@@ -24,15 +23,22 @@ Config tested up to NVIM v0.10.1
 :TSInstall vim
 :TSInstall lua
 ```
+8. Install language servers
+    1. Install gopls language server `go install golang.org/x/tools/gopls@latest`
+    2. Official vue/language-server for vue/javascript 
+    ```
+    npm install -g @vue/language-server
+    npm install -g @vue/typescript-plugin typescript
+    ```
 
 ## Plugin Description
 
-### lsp
+### nvim-lspconfig
 https://github.com/neovim/nvim-lspconfig
 
 with neovim 0.5 LSP(language server protocol) is built in. The plugin nvim-lspconfig comes with config that
 makes it easy to connect the LSP to language servers out of the box. Our autocompletion uses the built in lsp.
-Ale should use the buit in lsp but I don't have that set up correctly yet.
+All of our diagnostics, linting and formatting are handled through lsps.
 
 ### nvim-cmp
 https://github.com/hrsh7th/nvim-cmp
@@ -78,6 +84,13 @@ https://github.com/andymass/vim-matchup
 
 vim-matchup extends vim's % to make it work much more accurately. It integrates with
 treesitter to make sure it works well.
+
+
+### nvim-autopairs
+https://github.com/windwp/nvim-autopairs
+
+A super powerful autopair plugin for Neovim that supports multiple characters.
+Auto inserts matching open and close parens and quotes, etc.
 
 
 

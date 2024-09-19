@@ -164,7 +164,7 @@ function! ToggleDiff()
 endfunction
 
 " Map <leader>d to toggle diff mode
-nnoremap <leader>d :call ToggleDiff()<CR>
+" nnoremap <leader>d :call ToggleDiff()<CR>
 
 "------------------------------------------------
 " Plugins
@@ -371,9 +371,13 @@ EOF
 
 " Auto-format *.go (go) files prior to saving them
 autocmd BufWritePre *.go lua vim.lsp.buf.format()
+autocmd BufWritePre *.vue lua vim.lsp.buf.format()
+autocmd BufWritePre *.ts lua vim.lsp.buf.format()
+autocmd BufWritePre *.js lua vim.lsp.buf.format()
 autocmd BufWritePre *.rb lua vim.lsp.buf.format()
 
 lua << EOF
+
 
 -- lsp diagnostic settings
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -417,7 +421,6 @@ require'lspconfig'.gopls.setup{
       },
       extra_trigger_chars = {} -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
     }
-
   --show definition
   vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
   --jump to definition
@@ -435,6 +438,36 @@ require'lspconfig'.gopls.setup{
   capabilities = capabilities
 }
 
+
+--set up lsp for vue and js/ts
+-- lspconfig.tsserver.setup {} 
+local lspconfig = require('lspconfig')
+lspconfig.volar.setup {
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  init_options = {
+    typescript = {
+        tsdk = '/usr/local/lib/node_modules/typescript/lib'
+    },
+    vue = {
+      hybridMode = false,
+    },
+  },
+  on_attach = function(client, bufnr)
+  --show definition
+  vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
+  --jump to definition
+  vim.keymap.set("n","gd", vim.lsp.buf.definition, {buffer=0})
+  --jump to type definition
+  vim.keymap.set("n","gy", vim.lsp.buf.type_definition, {buffer=0})
+  --jump to next or previous diagnostic message
+  vim.keymap.set("n","<leader>dj", vim.diagnostic.goto_next, {buffer=0})
+  vim.keymap.set("n","<leader>dk", vim.diagnostic.goto_prev, {buffer=0})
+  --rename
+  vim.keymap.set("n","<leader>rr", vim.lsp.buf.rename, {buffer=0})
+  --code actions
+  vim.keymap.set("n","<leader>ra", vim.lsp.buf.code_action, {buffer=0})
+  end,
+}
 
 EOF
 
