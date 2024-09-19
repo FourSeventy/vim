@@ -1,9 +1,6 @@
 [submodule "pack/plugins/start/ReplaceWithRegister"]
 	path = pack/plugins/start/ReplaceWithRegister
 	url = https://github.com/vim-scripts/ReplaceWithRegister.git
-[submodule "pack/plugins/start/auto-pairs"]
-	path = pack/plugins/start/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
 [submodule "pack/plugins/start/nerdtree"]
 	path = pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -77,3 +74,6 @@
 [submodule "pack/plugins/start/cmp-calc"]
 	path = pack/plugins/start/cmp-calc
 	url = https://github.com/hrsh7th/cmp-calc.git
+[submodule "pack/plugins/start/nvim-autopairs"]
+	path = pack/plugins/start/nvim-autopairs
+	url = https://github.com/windwp/nvim-autopairs.git
