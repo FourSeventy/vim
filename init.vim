@@ -471,6 +471,60 @@ lspconfig.volar.setup {
 
 EOF
 
+"------------------------ nvim-dap --------------------------
+lua << EOF
+local dap = require "dap"
+local ui = require "dapui"
+--golang setup
+require('dapui').setup()
+require('dap-go').setup({
+    dap_configurations = {
+        {
+          type = "go",
+          name = "[githooks] Debug Test (go.mod)",
+          request = "launch",
+          mode = "test",
+          program = "${fileDirname}",
+
+          -- Because we are in a subdirevtory, this is needed.
+          dlvCwd = "${fileDirname}",
+        },
+    }
+})
+
+vim.keymap.set("n", "<leader>eb", dap.toggle_breakpoint)
+vim.keymap.set("n", "<leader>er", dap.run_to_cursor)
+
+-- Eval var under cursor
+vim.keymap.set("n", "<leader>ek", function()
+  require("dapui").eval(nil, { enter = true })
+end)
+
+vim.keymap.set("n", "<leader>ec", dap.continue)
+vim.keymap.set("n", "<leader>e2", dap.step_into)
+vim.keymap.set("n", "<leader>e3", dap.step_over)
+vim.keymap.set("n", "<leader>e4", dap.step_out)
+vim.keymap.set("n", "<leader>e5", dap.step_back)
+vim.keymap.set("n", "<leader>e6", dap.restart)
+
+dap.listeners.before.attach.dapui_config = function()
+  ui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+  ui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+  ui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+  ui.close()
+end
+
+
+EOF
+
+
+
 
 "--------------- nvim-autopairs -------------------
 lua << EOF

@@ -77,3 +77,15 @@
 [submodule "pack/plugins/start/nvim-autopairs"]
 	path = pack/plugins/start/nvim-autopairs
 	url = https://github.com/windwp/nvim-autopairs.git
+[submodule "pack/plugins/start/nvim-dap"]
+	path = pack/plugins/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
+[submodule "pack/plugins/start/nvim-dap-go"]
+	path = pack/plugins/start/nvim-dap-go
+	url = https://github.com/leoluz/nvim-dap-go
+[submodule "pack/plugins/start/nvim-dap-ui"]
+	path = pack/plugins/start/nvim-dap-ui
+	url = https://github.com/rcarriga/nvim-dap-ui.git
+[submodule "pack/plugins/start/nvim-nio"]
+	path = pack/plugins/start/nvim-nio
+	url = https://github.com/nvim-neotest/nvim-nio.git

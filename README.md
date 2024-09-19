@@ -8,7 +8,9 @@ Config tested up to NVIM v0.10.1
 3. Initialize vim submodules `cd ~/.vim/pack/plugins/start; git submodule init; git submodule update`
 4. Symlink init.vim `cd ~/.config/nvim; ln -s ~/.vim/init.vim init.vim`
 5. Install the font in the ./fonts directory, and configure your terminal to use it.
-6. Install ripgrep for telescope `sudo port install ripgrep`
+6. Install binary dependencies
+    1. ripgrep for telescope `sudo port install ripgrep`
+    2. delve for debugging `go install github.com/go-delve/delve/cmd/dlv@latest`
 7. Install treesitter parsers
 ```
 :TSInstall go
@@ -30,6 +32,9 @@ Config tested up to NVIM v0.10.1
     npm install -g @vue/language-server
     npm install -g @vue/typescript-plugin typescript
     ```
+
+## Hotkeys
+
 
 ## Plugin Description
 
@@ -64,6 +69,17 @@ Depencencies:
 nvim-lua/plenary.nvim
 BurntSushi/ripgrep --required for fast grepping
 
+### nvim-dap
+https://github.com/mfussenegger/nvim-dap
+
+nvim-dap is a Debug Adapter Protocol client implementation for neovim. Requires plugin adapters per language:
+* nvim-dap-go https://github.com/leoluz/nvim-dap-go requires delve in path
+
+Dependencies
+https://github.com/rcarriga/nvim-dap-ui
+https://github.com/nvim-neotest/nvim-nio
+
+
 ### vim-vsnip
 https://github.com/hrsh7th/vim-vsnip
 
@@ -91,7 +107,6 @@ https://github.com/windwp/nvim-autopairs
 
 A super powerful autopair plugin for Neovim that supports multiple characters.
 Auto inserts matching open and close parens and quotes, etc.
-
 
 
 
