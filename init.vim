@@ -179,7 +179,7 @@ let NERDTreeShowLineNumbers = 0
 let NERDTreeAutoCenter = 1
 
 " Open NERDTree on startup, when no file has been specified
-autocmd VimEnter * if !argc() | NERDTree | endif
+" autocmd VimEnter * if !argc() | NERDTree | endif
 
 
 "------------------ Airline ---------------------------
@@ -247,6 +247,7 @@ nnoremap <leader>fd <cmd>Telescope diagnostics<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fk <cmd>Telescope keymaps<cr>
+nnoremap <leader>fo <cmd>Telescope oldfiles<cr>
 "<C-q> will dump search results into quickfix
 
 lua << EOF
@@ -567,6 +568,41 @@ vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == clo
 
 EOF
 
+
+"---------------- alpha-nvim ---------------------
+lua << EOF
+local alpha = require("alpha")
+local dashboard = require("alpha.themes.dashboard")
+
+-- Set header
+dashboard.section.header.val = {
+    "                                                     ",
+    "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+    "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+    "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+    "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+    "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+    "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+    "                                                     ",
+}
+
+-- Set menu
+dashboard.section.buttons.val = {
+    dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
+    dashboard.button( "f", "  > Find file", ":Telescope find_files<CR>"),
+    dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
+    dashboard.button( "s", "  > Settings" , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+    dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
+}
+
+-- Send config to alpha
+alpha.setup(dashboard.opts)
+
+-- Disable folding on alpha buffer
+vim.cmd([[
+    autocmd FileType alpha setlocal nofoldenable
+]])
+EOF
 
 
 

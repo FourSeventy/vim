@@ -95,3 +95,6 @@
 [submodule "pack/plugins/start/promise-async"]
 	path = pack/plugins/start/promise-async
 	url = https://github.com/kevinhwang91/promise-async.git
+[submodule "pack/plugins/start/alpha-nvim"]
+	path = pack/plugins/start/alpha-nvim
+	url = https://github.com/goolord/alpha-nvim.git

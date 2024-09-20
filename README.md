@@ -116,6 +116,10 @@ Code folding done right
 Dependencies:
 kevinhwang91/promise-async
 
+### alpha-nvim
+https://github.com/goolord/alpha-nvim
+
+Startup screen.
 
 
 ## Maintenance
