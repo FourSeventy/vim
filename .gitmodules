@@ -89,3 +89,9 @@
 [submodule "pack/plugins/start/nvim-nio"]
 	path = pack/plugins/start/nvim-nio
 	url = https://github.com/nvim-neotest/nvim-nio.git
+[submodule "pack/plugins/start/nvim-ufo"]
+	path = pack/plugins/start/nvim-ufo
+	url = https://github.com/kevinhwang91/nvim-ufo.git
+[submodule "pack/plugins/start/promise-async"]
+	path = pack/plugins/start/promise-async
+	url = https://github.com/kevinhwang91/promise-async.git

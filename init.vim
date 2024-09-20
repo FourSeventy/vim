@@ -46,9 +46,6 @@ set novisualbell
 set t_vb=
 set tm=500
 
-"Make sure that extra margin on left is removed
-set foldcolumn=0
-
 "Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
@@ -109,10 +106,6 @@ noremap <Leader>W :w !sudo tee % > /dev/null
 
 "json formatting
 nmap <leader>y :%!python -m json.tool <CR>
-
-"enable code folding
-set foldenable
-set foldmethod=manual
 
 "disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -525,9 +518,62 @@ end
 EOF
 
 
-
-
 "--------------- nvim-autopairs -------------------
 lua << EOF
 require("nvim-autopairs").setup {}
 EOF
+
+
+"---------------- nvim-ufo ---------------------
+lua << EOF
+vim.o.foldcolumn = '0' -- '0' is not bad
+--This sets the maximum fold level to display when you open a file.
+--A high value like 99 means essentially all folds will be open by default.
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+-- This sets the starting fold level when you open a new buffer or window.
+-- Again, a high value like 99 means all folds will start open.
+vim.o.foldlevelstart = 99
+-- This enables folding functionality in Neovim.
+vim.o.foldenable = true
+
+
+-- select preferred provider for each file type lsp, treesitter, indent
+local ftMap = {
+    go = 'treesitter',
+    js = 'treesitter',
+    vue = 'treesitter',
+    rb = 'treesitter',
+}
+require('ufo').setup({
+    open_fold_hl_timeout = 150,
+    --fold types to be autoclosed
+    --based on treesitter node types, use :InspectTree in a file to see what they are
+    close_fold_kinds_for_ft = {
+        default = {'imports'},
+        go = {'import_declaration', 'function_declaration' },
+        vue = {'method_definition'},
+        ruby = {'method'}
+    },
+    provider_selector = function(bufnr, filetype, buftype)
+        --uses configured provider from ftMap or falls back to treesitter
+        return ftMap[filetype] or {'treesitter', 'indent'}
+    end
+})
+
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+
+EOF
+
+
+
+
+
+
+
+
+
+
+

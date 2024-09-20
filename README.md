@@ -108,6 +108,14 @@ https://github.com/windwp/nvim-autopairs
 A super powerful autopair plugin for Neovim that supports multiple characters.
 Auto inserts matching open and close parens and quotes, etc.
 
+### nvim-ufo
+https://github.com/kevinhwang91/nvim-ufo
+
+Code folding done right
+
+Dependencies:
+kevinhwang91/promise-async
+
 
 
 ## Maintenance
