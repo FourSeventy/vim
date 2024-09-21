@@ -175,9 +175,6 @@ require('lazy').setup({
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-          -- NOTE: Remember that Lua is a real programming language, and as such it is possible
-          -- to define small helper and utility functions so you don't have to repeat yourself.
-          --
           -- In this case, we create a function that lets us more easily define mappings specific
           -- for LSP related items. It sets the mode, buffer and description for us each time.
           local map = function(keys, func, desc, mode)
@@ -210,6 +207,10 @@ require('lazy').setup({
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>fY', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind s[Y]mbols')
 
+         --jump to next or previous diagnostic message
+          vim.keymap.set("n","<leader>ej", vim.diagnostic.goto_next, {buffer=0})
+          vim.keymap.set("n","<leader>ek", vim.diagnostic.goto_prev, {buffer=0})
+
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rr', vim.lsp.buf.rename, '[R]efactor [R]ename')
@@ -219,6 +220,15 @@ require('lazy').setup({
           map('<leader>ra', vim.lsp.buf.code_action, '[R]efactor [A]ction', { 'n' })
         end,
       })
+
+      -- lsp diagnostic settings
+      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+          virtual_text = false,
+          signs = true,
+          update_in_insert = false,
+        }
+      )
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -665,6 +675,7 @@ require('lazy').setup({
         { '<leader>d', group = '[D]ebug' },
         { '<leader>g', group = '[G]it' },
         { '<leader>t', group = '[T]oggle' },
+        { '<leader>e', group = '[E]rror' },
       },
     },
   },
