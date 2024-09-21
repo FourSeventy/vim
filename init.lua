@@ -344,6 +344,8 @@ require('lazy').setup({
           else
             return not context.in_treesitter_capture("comment") 
               and not context.in_syntax_group("Comment")
+             -- Add this line to disable for .txt files
+              and vim.bo.filetype ~= 'text'
           end
         end
       }
