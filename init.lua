@@ -489,7 +489,7 @@ require('lazy').setup({
           rb = 'treesitter',
       }
       require('ufo').setup({
-          open_fold_hl_timeout = 150,
+          open_fold_hl_timeout = 0,
           --fold types to be autoclosed
           --based on treesitter node types, use :InspectTree in a file to see what they are
           close_fold_kinds_for_ft = {
