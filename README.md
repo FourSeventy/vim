@@ -9,6 +9,7 @@ Config tested up to NVIM v0.10.1
 4. Install binary dependencies
     1. ripgrep for telescope `sudo port install ripgrep`
     2. delve for debugging `go install github.com/go-delve/delve/cmd/dlv@latest`
+    3. lazygit `https://github.com/jesseduffield/lazygit`
 5. Install treesitter parsers
 ```
 :TSInstall go
@@ -82,3 +83,8 @@ nvim-dap is a Debug Adapter Protocol client implementation for neovim. Requires 
 https://github.com/kevinhwang91/nvim-ufo
 
 Code folding done right
+
+### gitsigns && lazygit.nvim
+https://github.com/kdheepak/lazygit.nvim
+
+Managing git inside nvim

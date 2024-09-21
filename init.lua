@@ -210,9 +210,6 @@ require('lazy').setup({
           --  Similar to document symbols, except searches over your entire project.
           map('<leader>fY', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[F]ind s[Y]mbols')
 
-          map('<leader>dj', vim.diagnostic.goto_next, '[D]iagnostic next')
-          map('<leader>dk', vim.diagnostic.goto_prev, '[D]iagnostic previous')
-
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rr', vim.lsp.buf.rename, '[R]efactor [R]ename')
@@ -329,6 +326,16 @@ require('lazy').setup({
           { name = 'calc' },
           { name = 'buffer' },
         },
+       enabled = function()
+          -- disable completion in comments
+          local context = require 'cmp.config.context'
+          if vim.api.nvim_get_mode().mode == 'c' then -- keep command mode completion enabled when cursor is in a comment
+            return true
+          else
+            return not context.in_treesitter_capture("comment") 
+              and not context.in_syntax_group("Comment")
+          end
+        end
       }
     end,
   },
@@ -545,21 +552,21 @@ require('lazy').setup({
       local dapui = require 'dapui'
       return {
         -- Basic debugging keymaps, feel free to change to your liking!
-        { '<leader>ec', dap.continue, desc = 'Debug: Start/Continue' },
-        { '<leader>eb', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
-        { '<leader>er', dap.run_to_cursor, desc = 'Debug: Run to Cursor' },
-        { '<leader>e1', dap.step_into, desc = 'Debug: Step Into' },
-        { '<leader>e2', dap.step_over, desc = 'Debug: Step Over' },
-        { '<leader>e3', dap.step_out, desc = 'Debug: Step Out' },
+        { '<leader>dc', dap.continue, desc = 'Debug: Start/Continue' },
+        { '<leader>db', dap.toggle_breakpoint, desc = 'Debug: Toggle Breakpoint' },
+        { '<leader>dr', dap.run_to_cursor, desc = 'Debug: Run to Cursor' },
+        { '<leader>d1', dap.step_into, desc = 'Debug: Step Into' },
+        { '<leader>d2', dap.step_over, desc = 'Debug: Step Over' },
+        { '<leader>d3', dap.step_out, desc = 'Debug: Step Out' },
         {
-          '<leader>eB',
+          '<leader>dB',
           function()
             dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
           end,
           desc = 'Debug: Set Breakpoint',
         },
         -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-        { '<leader>es', dapui.toggle, desc = 'Debug: See last session result.' },
+        { '<leader>ds', dapui.toggle, desc = 'Debug: See last session result.' },
         unpack(keys),
       }
     end,
@@ -655,8 +662,9 @@ require('lazy').setup({
       spec = {
         { '<leader>f', group = '[F]ind', mode = { 'n' } },
         { '<leader>r', group = '[R]efactor' },
-        { '<leader>e', group = 'd[E]bug' },
-        { '<leader>d', group = '[D]iagnostic' },
+        { '<leader>d', group = '[D]ebug' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>t', group = '[T]oggle' },
       },
     },
   },
@@ -749,17 +757,80 @@ require('lazy').setup({
     event = "VeryLazy",
     opts = {},
   },
+  --lazygit inside of vim
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
+  },
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     'lewis6991/gitsigns.nvim',
     opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
+      on_attach = function(bufnr)
+        local gitsigns = require 'gitsigns'
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']c', function()
+          if vim.wo.diff then
+            vim.cmd.normal { ']c', bang = true }
+          else
+            gitsigns.nav_hunk 'next'
+          end
+        end, { desc = 'Jump to next git [c]hange' })
+
+        map('n', '[c', function()
+          if vim.wo.diff then
+            vim.cmd.normal { '[c', bang = true }
+          else
+            gitsigns.nav_hunk 'prev'
+          end
+        end, { desc = 'Jump to previous git [c]hange' })
+
+        -- Actions
+        -- visual mode
+        map('v', '<leader>gs', function()
+          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'stage git hunk' })
+        map('v', '<leader>gr', function()
+          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'reset git hunk' })
+        -- normal mode
+        map('n', '<leader>gs', gitsigns.stage_hunk, { desc = '[G]it [s]tage hunk' })
+        map('n', '<leader>gr', gitsigns.reset_hunk, { desc = '[G]it [r]eset hunk' })
+        map('n', '<leader>gS', gitsigns.stage_buffer, { desc = '[G]it [S]tage buffer' })
+        map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = '[G]it [u]ndo stage hunk' })
+        map('n', '<leader>gR', gitsigns.reset_buffer, { desc = '[G]it [R]eset buffer' })
+        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [p]review hunk' })
+        map('n', '<leader>gb', gitsigns.blame_line, { desc = '[G]it [b]lame line' })
+        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[G]it [d]iff against index' })
+        map('n', '<leader>gD', function()
+          gitsigns.diffthis '@'
+        end, { desc = '[G]it [D]iff against last commit' })
+        -- Toggles
+        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
+        map('n', '<leader>tD', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' })
+      end,
     },
   },
 
