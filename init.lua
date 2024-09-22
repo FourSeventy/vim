@@ -35,10 +35,11 @@ vim.opt.breakindent = true
 
 -- Use spaces instead of tabs
 vim.opt.expandtab = true
--- -- Be smart when using tabs
+-- Be smart when using tabs
 vim.opt.smarttab = true
--- -- 1 tab == 2 spaces
+-- 2 spaces per indent
 vim.opt.shiftwidth = 2
+-- 1 tab == 2 spaces
 vim.opt.tabstop = 2
 vim.opt.shiftround = true
 
