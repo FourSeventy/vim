@@ -33,6 +33,15 @@ end)
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Use spaces instead of tabs
+vim.opt.expandtab = true
+-- -- Be smart when using tabs
+vim.opt.smarttab = true
+-- -- 1 tab == 2 spaces
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.shiftround = true
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -188,7 +197,7 @@ require('lazy').setup({
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('ge', require('telescope.builtin').lsp_references, '[G]oto r[E]ferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
