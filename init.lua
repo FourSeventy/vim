@@ -479,7 +479,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]find [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]find [K]eymaps' })
-      vim.keymap.set('n', '<leader>fs', builtin.builtin, { desc = '[F]find [S]elect Telescope' })
       vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]find Recent Files ("." for repeat)' })
       --<C-q> will dump search results into quickfix
     end,
