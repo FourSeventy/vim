@@ -324,9 +324,9 @@ require('lazy').setup({
         mapping = cmp.mapping.preset.insert {
 
           -- Select next item
-          ['<C-f>'] = cmp.mapping.select_next_item(),
+          ['<C-f>'] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Select}),
           -- Select previous item
-          ['<C-b>'] = cmp.mapping.select_prev_item(),
+          ['<C-b>'] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Select}),
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
