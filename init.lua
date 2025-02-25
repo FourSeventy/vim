@@ -254,18 +254,18 @@ require('lazy').setup({
       }
 
       --set up lsp for vue and js/ts
-      require('lspconfig').volar.setup {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-        init_options = {
-          typescript = {
-              tsdk = '/usr/local/lib/node_modules/typescript/lib'
-          },
-          vue = {
-            hybridMode = false,
-          },
-        },
-       capabilities = capabilities
-      }
+      -- require('lspconfig').volar.setup {
+      --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+      --   init_options = {
+      --     typescript = {
+      --         tsdk = '/usr/local/lib/node_modules/typescript/lib'
+      --     },
+      --     vue = {
+      --       hybridMode = false,
+      --     },
+      --   },
+      --  capabilities = capabilities
+      -- }
 
       --format on save
       vim.api.nvim_create_autocmd("BufWritePre", {
