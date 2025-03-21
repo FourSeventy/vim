@@ -629,7 +629,7 @@ require('lazy').setup({
         dap_configurations = {
             {
               type = "go",
-              name = "[githooks] Debug Test (go.mod)",
+              name = "[Nested] Debug Test (go.mod)",
               request = "launch",
               mode = "test",
               program = "${fileDirname}",
