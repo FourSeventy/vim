@@ -617,7 +617,10 @@ require('lazy').setup({
         },
       }
 
-      dap.listeners.after.event_initialized['dapui_config'] = dapui.open
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        vim.cmd('Neotree close')
+        dapui.open()
+      end
       dap.listeners.before.event_terminated['dapui_config'] = dapui.close
       dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
