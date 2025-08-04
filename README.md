@@ -23,6 +23,7 @@ Config tested up to NVIM v0.10.1
 :TSInstall javascript
 :TSInstall vim
 :TSInstall lua
+:TSInstall embedded_template
 ```
 6. Install language servers
     1. Install gopls language server `go install golang.org/x/tools/gopls@latest`
