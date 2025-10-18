@@ -158,6 +158,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- Here is where you install your plugins.
 require('lazy').setup({
+
   -- nvim-lspconfig
   {
     -- Main LSP Configuration
@@ -249,23 +250,10 @@ require('lazy').setup({
 
 
       -- set up golang lsp server
-      require('lspconfig').gopls.setup{
+      vim.lsp.config("gopls",{
        capabilities = capabilities
-      }
-
-      --set up lsp for vue and js/ts
-      -- require('lspconfig').volar.setup {
-      --   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-      --   init_options = {
-      --     typescript = {
-      --         tsdk = '/usr/local/lib/node_modules/typescript/lib'
-      --     },
-      --     vue = {
-      --       hybridMode = false,
-      --     },
-      --   },
-      --  capabilities = capabilities
-      -- }
+      })
+      vim.lsp.enable({"gopls"})
 
       --format on save
       vim.api.nvim_create_autocmd("BufWritePre", {
