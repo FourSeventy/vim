@@ -29,6 +29,10 @@ Config requires at least NVIM v0.12.0
 6. Install language servers
     1. Install gopls language server `go install golang.org/x/tools/gopls@latest`
 
+## Updating plugins
+
+`:lua vim.pack.update()`
+
 
 
 
