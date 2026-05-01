@@ -225,7 +225,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 --------- autocomplete --------------
 -- We are using built-in autocomplete
 vim.opt.completeopt = "menu,menuone,noselect,popup" -- Ensures the menu appears even for a single match and uses the native popup window.
-vim.o.autocomplete = true -- Enables the overall completion feature.
+vim.bo.autocomplete = vim.bo.buftype == '' -- Enables the overall completion feature. (only in standard buffers)
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp_completion", { clear = true }),
   callback = function(args)
